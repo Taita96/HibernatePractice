@@ -84,7 +84,7 @@ public class SupplierDAO implements ISupplierDAO {
         List<Supplier> list = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
-            Query query = session.createQuery("FROM supplier");
+            Query query = session.createQuery("FROM Supplier");
             list = (List<Supplier>) query.getResultList();
             return list;
         } catch (HibernateException e) {
@@ -100,4 +100,22 @@ public class SupplierDAO implements ISupplierDAO {
         }
         return null;
     }
+
+    @Override
+    public Supplier getById(int supplierId) {
+        Session session = null;
+        Supplier supplier = null;
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            supplier = session.get(Supplier.class, supplierId);
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+        return supplier;
+    }
+
 }

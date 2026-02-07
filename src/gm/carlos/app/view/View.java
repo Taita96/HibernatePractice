@@ -20,7 +20,7 @@ public class View extends JFrame{
     public JPanel panelCenter;
     public JPanel panelEast;
 
-
+    public final SupplierView supplierView = new SupplierView();
 
     public View(){
         setTitle("WareHouse");
@@ -37,9 +37,8 @@ public class View extends JFrame{
     }
 
     private void initCards() {
-        SupplierView supplierView = new SupplierView();
 
-        panelCenter.removeAll(); // limpieza segura
+        panelCenter.removeAll();
         panelCenter.add(supplierView.SupplierCard);
 
         panelCenter.revalidate();

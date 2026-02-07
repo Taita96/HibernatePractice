@@ -3,19 +3,21 @@ package gm.carlos.app.view;
 import gm.carlos.app.util.Utilities;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
 public class SupplierView extends JPanel {
 
     public JPanel SupplierCard;
-    public JTable table1;
-    public JButton btnTableSupplierSave;
+    public JTable tableSuppliers;
+    public JButton btnTableGoHome;
     public JButton btnTableSupplierDelete;
     public JTextField txtSupplierName;
     public JTextField txtSupplierContact;
     public JButton btnFormSupplierSave;
     public JButton btnFormSupplierUpdate;
-    public JButton btnFormSupplierUpdateClean;
+    public JButton btnFormSupplierClean;
+    public DefaultTableModel dtmTableSupplier;
 
     public SupplierView() {
         initComponent();
@@ -24,26 +26,38 @@ public class SupplierView extends JPanel {
 
     private void initComponent() {
         initBtn();
+        initTables();
+    }
+
+    private void initTables() {
+
+        dtmTableSupplier = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return column != 0;
+            }
+        };
+        tableSuppliers.setModel(dtmTableSupplier);
     }
 
 
     private void initBtn() {
-        //Panel Center
-        Utilities.setBorderBtn(btnTableSupplierSave, Color.white,null,null);
-        btnTableSupplierSave.setActionCommand("btnTableSupplierSave");
+        //btn Table
+        Utilities.setBorderBtn(btnTableGoHome, Color.white, null, null);
+        btnTableGoHome.setActionCommand("btnTableGoHome");
 
-        Utilities.setBorderBtn(btnTableSupplierDelete, Color.white,null,null);
+        Utilities.setBorderBtn(btnTableSupplierDelete, Color.white, null, null);
         btnTableSupplierDelete.setActionCommand("btnTableSupplierDelete");
 
-        //Card Panel Center
-        Utilities.setBorderBtn(btnFormSupplierSave, Color.white,null,null);
+        //btn Form
+        Utilities.setBorderBtn(btnFormSupplierSave, Color.white, null, null);
         btnFormSupplierSave.setActionCommand("btnFormSupplierSave");
 
-        Utilities.setBorderBtn(btnFormSupplierUpdate, Color.white,null,null);
+        Utilities.setBorderBtn(btnFormSupplierUpdate, Color.white, null, null);
         btnFormSupplierUpdate.setActionCommand("btnFormSupplierUpdate");
 
-        Utilities.setBorderBtn(btnFormSupplierUpdateClean, Color.white,null,null);
-        btnFormSupplierUpdateClean.setActionCommand("btnFormSupplierUpdateClean");
+        Utilities.setBorderBtn(btnFormSupplierClean, Color.white, null, null);
+        btnFormSupplierClean.setActionCommand("btnFormSupplierUpdateClean");
     }
 
 }

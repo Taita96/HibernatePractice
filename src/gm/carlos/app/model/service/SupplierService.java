@@ -20,7 +20,11 @@ public class SupplierService {
         supplierDAO.update(supplier);
     }
 
-    public List<Supplier> getAllSupplier(Supplier supplier){
+    public List<Supplier> getAllSupplier(){
         return supplierDAO.getAll();
+    }
+
+    public Supplier getByIdSupplier(int supplierId ){
+        return supplierDAO.getById(supplierId);
     }
 }

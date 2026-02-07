@@ -1,4 +1,5 @@
 import gm.carlos.app.controller.IndexController;
+import gm.carlos.app.controller.SupplierController;
 import gm.carlos.app.model.Model;
 import gm.carlos.app.model.entity.Supplier;
 import gm.carlos.app.util.HibernateUtil;
@@ -11,6 +12,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import javax.persistence.metamodel.EntityType;
+import javax.swing.*;
 
 import java.util.Map;
 
@@ -50,8 +52,12 @@ public class Main {
         }
 
         try {
-            View view = new View();
-            new IndexController(view);
+            SwingUtilities.invokeLater(() -> {
+                Model model = new Model();
+                View view = new View();
+
+                new IndexController(view,model);
+            });
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

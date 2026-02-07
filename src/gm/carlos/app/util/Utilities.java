@@ -62,6 +62,11 @@ public class Utilities {
         btn.setVisible(behavior);
     }
 
+    public static boolean validateEmail(String email) {
+        String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z]+\\.[A-Za-z]{2,}$";
+        return email.trim().matches(regex);
+    }
+
     public static void showErrorAlert(String mensaje) {
         JOptionPane.showMessageDialog(null,mensaje,"Error",JOptionPane.ERROR_MESSAGE);
     }

@@ -38,7 +38,7 @@
                 </properties>
                 <border type="none"/>
                 <children>
-                  <component id="33d39" class="javax.swing.JTable" binding="table1" default-binding="true">
+                  <component id="33d39" class="javax.swing.JTable" binding="tableSuppliers">
                     <constraints/>
                     <properties>
                       <background color="-1249812"/>
@@ -55,12 +55,12 @@
                 </properties>
                 <border type="none"/>
                 <children>
-                  <component id="f753d" class="javax.swing.JButton" binding="btnTableSupplierSave">
+                  <component id="f753d" class="javax.swing.JButton" binding="btnTableGoHome">
                     <constraints/>
                     <properties>
-                      <background color="-13730510"/>
+                      <background color="-11711155"/>
                       <foreground color="-1"/>
-                      <text value="Save"/>
+                      <text value="Home"/>
                     </properties>
                   </component>
                   <component id="d60ab" class="javax.swing.JButton" binding="btnTableSupplierDelete">
@@ -178,7 +178,7 @@
                       <text value="update"/>
                     </properties>
                   </component>
-                  <component id="571ae" class="javax.swing.JButton" binding="btnFormSupplierUpdateClean">
+                  <component id="571ae" class="javax.swing.JButton" binding="btnFormSupplierClean">
                     <constraints/>
                     <properties>
                       <background color="-19712"/>

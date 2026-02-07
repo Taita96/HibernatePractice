@@ -10,4 +10,5 @@ public interface ISupplierDAO {
     boolean update(Supplier supplier);
     boolean delete(Supplier supplier);
     List<Supplier> getAll();
+    Supplier getById(int supplierId);
 }
