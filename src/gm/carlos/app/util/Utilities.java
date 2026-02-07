@@ -4,17 +4,17 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableCellRenderer;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class Utilities {
 
-    public static void setBorderBtn(JButton btn,Color color,Color hover,Color txtBtnColor) {
+    public static void setBorderBtn(JButton btn,Color color) {
 
         Color normalBg = btn.getBackground();
-        Color hoverBg  = hover != null ? hover : new Color(230, 230, 230);
-        Color btnTextColor = txtBtnColor != null ? txtBtnColor : Color.white;
+        Color hoverBg  = new Color(230, 230, 230);
 
         LineBorder lineBorder = new LineBorder(color, 2, true);
         Border emptyBorder = BorderFactory.createEmptyBorder(5, 40, 5, 40);
@@ -28,11 +28,6 @@ public class Utilities {
             @Override
             public void mouseEntered(MouseEvent e) {
                 btn.setBackground(hoverBg);
-
-                if(txtBtnColor == null){
-                    btn.setForeground(btnTextColor);
-                    return;
-                }
 
                 if(btn.getForeground().equals(Color.white)){
                     btn.setForeground(normalBg);
@@ -50,6 +45,17 @@ public class Utilities {
         });
     }
 
+    public static void centerTable(JTable table) {
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+
+        for (int i = 0; i < table.getColumnCount(); i++) {
+            table.getColumnModel()
+                    .getColumn(i)
+                    .setCellRenderer(centerRenderer);
+        }
+    }
+
     public static void setBorderTxtField(JTextField txt,Color color){
         LineBorder lineBorder = new LineBorder(color, 1, true);
         Border emptyBorder = BorderFactory.createEmptyBorder(5, 5, 5, 40);
@@ -64,7 +70,7 @@ public class Utilities {
 
     public static boolean validateEmail(String email) {
         String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z]+\\.[A-Za-z]{2,}$";
-        return email.trim().matches(regex);
+        return !email.trim().matches(regex);
     }
 
     public static void showErrorAlert(String mensaje) {

@@ -1,7 +1,5 @@
 import gm.carlos.app.controller.IndexController;
-import gm.carlos.app.controller.SupplierController;
 import gm.carlos.app.model.Model;
-import gm.carlos.app.model.entity.Supplier;
 import gm.carlos.app.util.HibernateUtil;
 import gm.carlos.app.view.View;
 import org.hibernate.HibernateException;
@@ -13,8 +11,6 @@ import org.hibernate.cfg.Configuration;
 
 import javax.persistence.metamodel.EntityType;
 import javax.swing.*;
-
-import java.util.Map;
 
 public class Main {
     private static final SessionFactory ourSessionFactory;

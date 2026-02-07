@@ -11,6 +11,15 @@ public class Location {
     private String shelf;
     private List<LocationBag> location;
 
+    public Location(String aisle, String shelf) {
+        this.aisle = aisle;
+        this.shelf = shelf;
+    }
+
+    public Location() {
+
+    }
+
     @Id
     @Column(name = "idlocation")
     public int getIdlocation() {

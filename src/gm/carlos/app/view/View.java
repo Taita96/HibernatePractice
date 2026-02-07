@@ -1,6 +1,8 @@
 package gm.carlos.app.view;
 
 import gm.carlos.app.util.Utilities;
+import gm.carlos.app.view.location.LocationView;
+import gm.carlos.app.view.supplier.SupplierView;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,6 +23,7 @@ public class View extends JFrame{
     public JPanel panelEast;
 
     public final SupplierView supplierView = new SupplierView();
+    public final LocationView locationView = new LocationView();
 
     public View(){
         setTitle("WareHouse");
@@ -39,23 +42,24 @@ public class View extends JFrame{
     private void initCards() {
 
         panelCenter.removeAll();
-        panelCenter.add(supplierView.SupplierCard);
-
+        panelCenter.add(supplierView.SupplierCard,"supplierCard");
+        panelCenter.add(locationView.locationCard,"locationCard");
         panelCenter.revalidate();
         panelCenter.repaint();
     }
 
     private void initBtn() {
-        Utilities.setBorderBtn(btnWestSuppliers, Color.white,Color.BLACK,null);
+        Color btnColor = new Color(77, 77, 77);
+        Utilities.setBorderBtn(btnWestSuppliers,btnColor);
         btnWestSuppliers.setActionCommand("btnWestSuppliers");
 
-        Utilities.setBorderBtn(btnWestLocation, Color.white,Color.BLACK,null);
+        Utilities.setBorderBtn(btnWestLocation,btnColor);
         btnWestLocation.setActionCommand("btnWestLocation");
 
-        Utilities.setBorderBtn(btnWestBags, Color.white,Color.BLACK,null);
+        Utilities.setBorderBtn(btnWestBags, btnColor);
         btnWestBags.setActionCommand("btnWestBags");
 
-        Utilities.setBorderBtn(btnWestinformation, Color.white,Color.BLACK,null);
+        Utilities.setBorderBtn(btnWestinformation,btnColor);
         btnWestinformation.setActionCommand("btnWestinformation");
     }
 }

@@ -1,33 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="gm.carlos.app.view.SupplierView">
-  <grid id="27dc6" layout-manager="CardLayout" hgap="0" vgap="0">
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="gm.carlos.app.view.location.LocationView">
+  <grid id="27dc6" layout-manager="CardLayout" hgap="0" vgap="0" show="b8759">
     <constraints>
-      <xy x="20" y="20" width="844" height="457"/>
+      <xy x="20" y="20" width="500" height="400"/>
     </constraints>
     <properties/>
     <border type="none"/>
     <children>
-      <grid id="9a66a" binding="SupplierCard" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="true" same-size-vertically="true" hgap="-1" vgap="-1">
-        <margin top="0" left="20" bottom="0" right="20"/>
+      <grid id="b8759" binding="locationCard" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="10" left="20" bottom="0" right="20"/>
         <constraints>
-          <card name="SupplierCard"/>
+          <card name="locationCard"/>
         </constraints>
         <properties>
           <background color="-1249812"/>
         </properties>
         <border type="none"/>
         <children>
-          <grid id="abbb6" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-            <margin top="0" left="0" bottom="0" right="0"/>
+          <component id="de6d8" class="javax.swing.JLabel">
             <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font name="Roboto" size="16" style="1"/>
+              <foreground color="-16777216"/>
+              <text value="Location Infomarion"/>
+            </properties>
+          </component>
+          <grid id="ab3a9" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="5" left="0" bottom="5" right="0"/>
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <background color="-1249812"/>
             </properties>
             <border type="none"/>
             <children>
-              <scrollpane id="629c8">
+              <scrollpane id="710f1">
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false">
                     <preferred-size width="453" height="204"/>
@@ -38,7 +48,7 @@
                 </properties>
                 <border type="none"/>
                 <children>
-                  <component id="33d39" class="javax.swing.JTable" binding="tableSuppliers">
+                  <component id="ec0" class="javax.swing.JTable" binding="tableLocation">
                     <constraints/>
                     <properties>
                       <background color="-1249812"/>
@@ -46,7 +56,7 @@
                   </component>
                 </children>
               </scrollpane>
-              <grid id="947c4" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+              <grid id="8fa44" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
                 <constraints>
                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -55,7 +65,7 @@
                 </properties>
                 <border type="none"/>
                 <children>
-                  <component id="f753d" class="javax.swing.JButton" binding="btnTableGoHome">
+                  <component id="3e657" class="javax.swing.JButton" binding="btnTableGoHome">
                     <constraints/>
                     <properties>
                       <background color="-11711155"/>
@@ -63,7 +73,7 @@
                       <text value="Home"/>
                     </properties>
                   </component>
-                  <component id="d60ab" class="javax.swing.JButton" binding="btnTableSupplierDelete">
+                  <component id="2f41a" class="javax.swing.JButton" binding="btnTableDelete">
                     <constraints/>
                     <properties>
                       <background color="-3790808"/>
@@ -75,20 +85,20 @@
               </grid>
             </children>
           </grid>
-          <grid id="ab952" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="18f51" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
-              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <background color="-1249812"/>
             </properties>
-            <border type="bevel-raised" title="Add Supplier" title-justification="1">
+            <border type="bevel-raised" title="Add Location" title-justification="1">
               <font name="Fira Code" size="12" style="1"/>
               <title-color color="-16777216"/>
             </border>
             <children>
-              <grid id="fb730" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="0">
+              <grid id="bb82a" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="0">
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -99,16 +109,16 @@
                   <title-color color="-4473925"/>
                 </border>
                 <children>
-                  <component id="595ce" class="javax.swing.JLabel">
+                  <component id="1413" class="javax.swing.JLabel">
                     <constraints/>
                     <properties>
                       <font name="Roboto" size="12" style="1"/>
                       <foreground color="-16777216"/>
                       <horizontalAlignment value="2"/>
-                      <text value="Name"/>
+                      <text value="Aisle"/>
                     </properties>
                   </component>
-                  <component id="d0805" class="javax.swing.JTextField" binding="txtSupplierName">
+                  <component id="1288b" class="javax.swing.JTextField" binding="txtAisle">
                     <constraints/>
                     <properties>
                       <background color="-1249812"/>
@@ -119,7 +129,7 @@
                   </component>
                 </children>
               </grid>
-              <grid id="93733" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="0">
+              <grid id="a1616" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="0">
                 <constraints>
                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -130,16 +140,16 @@
                   <title-color color="-4473925"/>
                 </border>
                 <children>
-                  <component id="4a966" class="javax.swing.JLabel">
+                  <component id="e50e5" class="javax.swing.JLabel">
                     <constraints/>
                     <properties>
                       <font name="Roboto" size="12" style="1"/>
                       <foreground color="-16777216"/>
                       <horizontalAlignment value="2"/>
-                      <text value="Contact"/>
+                      <text value="Shelf"/>
                     </properties>
                   </component>
-                  <component id="11f51" class="javax.swing.JTextField" binding="txtSupplierContact">
+                  <component id="8aade" class="javax.swing.JTextField" binding="txtShelf">
                     <constraints/>
                     <properties>
                       <background color="-1249812"/>
@@ -151,7 +161,7 @@
                   </component>
                 </children>
               </grid>
-              <grid id="b62b7" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="0">
+              <grid id="dad5e" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="0">
                 <constraints>
                   <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -162,7 +172,7 @@
                   <title-color color="-4473925"/>
                 </border>
                 <children>
-                  <component id="a1faf" class="javax.swing.JButton" binding="btnFormSupplierSave">
+                  <component id="d7da9" class="javax.swing.JButton" binding="btnFormSave">
                     <constraints/>
                     <properties>
                       <background color="-13730510"/>
@@ -170,7 +180,7 @@
                       <text value="save"/>
                     </properties>
                   </component>
-                  <component id="a0fcc" class="javax.swing.JButton" binding="btnFormSupplierUpdate">
+                  <component id="76890" class="javax.swing.JButton" binding="btnFormUpdate">
                     <constraints/>
                     <properties>
                       <background color="-15374912"/>
@@ -178,7 +188,7 @@
                       <text value="update"/>
                     </properties>
                   </component>
-                  <component id="571ae" class="javax.swing.JButton" binding="btnFormSupplierClean">
+                  <component id="150b6" class="javax.swing.JButton" binding="btnFormClean">
                     <constraints/>
                     <properties>
                       <background color="-19712"/>

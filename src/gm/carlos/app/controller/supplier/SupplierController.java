@@ -1,9 +1,9 @@
-package gm.carlos.app.controller;
+package gm.carlos.app.controller.supplier;
 
 import gm.carlos.app.model.Model;
 import gm.carlos.app.model.entity.Supplier;
 import gm.carlos.app.util.Utilities;
-import gm.carlos.app.view.SupplierView;
+import gm.carlos.app.view.supplier.SupplierView;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -79,6 +79,13 @@ public class SupplierController implements ActionListener, ListSelectionListener
     }
 
     private void delete() {
+        int row = supplierView.tableSuppliers.getSelectedRow();
+
+        if (row < 0) {
+            Utilities.showErrorAlert("Select a Supplier first");
+            return;
+        }
+
         model.getSupplierService().deleteSupplier(currentSupplier);
         cleanUI();
     }
@@ -135,7 +142,7 @@ public class SupplierController implements ActionListener, ListSelectionListener
             return true;
         }
 
-        if(!Utilities.validateEmail(contact)){
+        if(Utilities.validateEmail(contact)){
             Utilities.showErrorAlert("Email incorrect Form.");
             supplierView.txtSupplierContact.requestFocus();
             return true;
@@ -170,6 +177,7 @@ public class SupplierController implements ActionListener, ListSelectionListener
                     supplier.getContact()
             });
         }
+        Utilities.centerTable(supplierView.tableSuppliers);
     }
 
     @Override
@@ -222,7 +230,7 @@ public class SupplierController implements ActionListener, ListSelectionListener
                 supplier.setName(newValue.toString().trim());
                 break;
             case 2:
-                if (!Utilities.validateEmail(newValue.toString())) {
+                if (Utilities.validateEmail(newValue.toString())) {
                     Utilities.showErrorAlert("Email incorrect Form.");
                     cleanUI();
                     return;

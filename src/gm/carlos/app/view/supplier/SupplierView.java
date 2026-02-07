@@ -1,4 +1,4 @@
-package gm.carlos.app.view;
+package gm.carlos.app.view.supplier;
 
 import gm.carlos.app.util.Utilities;
 
@@ -38,25 +38,26 @@ public class SupplierView extends JPanel {
             }
         };
         tableSuppliers.setModel(dtmTableSupplier);
+
     }
 
 
     private void initBtn() {
         //btn Table
-        Utilities.setBorderBtn(btnTableGoHome, Color.white, null, null);
+        Utilities.setBorderBtn(btnTableGoHome, Color.white);
         btnTableGoHome.setActionCommand("btnTableGoHome");
 
-        Utilities.setBorderBtn(btnTableSupplierDelete, Color.white, null, null);
+        Utilities.setBorderBtn(btnTableSupplierDelete, Color.white);
         btnTableSupplierDelete.setActionCommand("btnTableSupplierDelete");
 
         //btn Form
-        Utilities.setBorderBtn(btnFormSupplierSave, Color.white, null, null);
+        Utilities.setBorderBtn(btnFormSupplierSave, Color.white);
         btnFormSupplierSave.setActionCommand("btnFormSupplierSave");
 
-        Utilities.setBorderBtn(btnFormSupplierUpdate, Color.white, null, null);
+        Utilities.setBorderBtn(btnFormSupplierUpdate, Color.white);
         btnFormSupplierUpdate.setActionCommand("btnFormSupplierUpdate");
 
-        Utilities.setBorderBtn(btnFormSupplierClean, Color.white, null, null);
+        Utilities.setBorderBtn(btnFormSupplierClean, Color.white);
         btnFormSupplierClean.setActionCommand("btnFormSupplierUpdateClean");
     }
 
