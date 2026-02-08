@@ -6,9 +6,11 @@ import java.util.List;
 
 public interface IBagDAO {
 
-    void save(Bag bag);
-    void update(Bag bag);
-    void delete(Bag bag);
+    Bag save(Bag bag);
+    boolean update(Bag bag);
+    boolean delete(Bag bag);
     List<Bag> getAll();
+    Bag getById(int bagId);
+    List<Bag> getAllWithDetails();
 
 }

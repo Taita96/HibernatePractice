@@ -1,6 +1,7 @@
 package gm.carlos.app.model.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -9,7 +10,7 @@ public class Supplier {
     private int idsupplier;
     private String name;
     private String contact;
-    private List<Bag> bags;
+    private List<Bag> bags = new ArrayList<>();;
 
     public Supplier(String name, String contact) {
         this.name = name;
@@ -20,6 +21,7 @@ public class Supplier {
     }
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idsupplier")
     public int getIdsupplier() {
         return idsupplier;
@@ -71,5 +73,10 @@ public class Supplier {
 
     public void setBags(List<Bag> bags) {
         this.bags = bags;
+    }
+
+    @Override
+    public String toString() {
+        return "name: " + name + ", contact: '" + contact;
     }
 }

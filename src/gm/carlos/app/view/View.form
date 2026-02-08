@@ -79,7 +79,7 @@
               <orientation value="0"/>
             </properties>
           </component>
-          <component id="51a28" class="javax.swing.JButton" binding="btnWestinformation">
+          <component id="51a28" class="javax.swing.JButton" binding="btnDashboard">
             <constraints>
               <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -89,7 +89,7 @@
               <foreground color="-1"/>
               <horizontalAlignment value="0"/>
               <horizontalTextPosition value="0"/>
-              <text value="General Information"/>
+              <text value="Dasboard"/>
               <verticalAlignment value="0"/>
             </properties>
           </component>

@@ -14,6 +14,7 @@ public class TechnicalSheet {
     private Bag bag;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idtechnical")
     public int getIdtechnical() {
         return idtechnical;
@@ -69,7 +70,9 @@ public class TechnicalSheet {
         return Objects.hash(idtechnical, material, weight, color);
     }
 
-    @OneToOne(mappedBy = "technicalSheet")
+    //    @OneToOne(mappedBy = "technicalSheet")
+    @OneToOne
+    @JoinColumn(name = "idbag")
     public Bag getBag() {
         return bag;
     }

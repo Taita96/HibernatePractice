@@ -1,5 +1,7 @@
 package gm.carlos.app.controller;
 
+import gm.carlos.app.controller.bag.BagController;
+import gm.carlos.app.controller.dasboard.DashboardController;
 import gm.carlos.app.controller.location.LocationController;
 import gm.carlos.app.controller.supplier.SupplierController;
 import gm.carlos.app.model.Model;
@@ -17,17 +19,21 @@ public class IndexController implements ActionListener{
 
     private final SupplierController supplierController;
     private final LocationController locationController;
+    private final BagController bagController;
+    private final DashboardController dashboardController;
 
     public IndexController(View view,Model model) {
         this.view = view;
         this.model = model;
         this.supplierController = new SupplierController(view.supplierView,model);
         this.locationController = new LocationController(view.locationView,model);
+        this.bagController = new BagController(view.BAG_VIEW,model);
+        this.dashboardController = new DashboardController(view.DASHBOARD_VIEW,model);
         addActionListener(this);
     }
 
     private void addActionListener(ActionListener actionListener) {
-        view.btnWestinformation.addActionListener(actionListener);
+        view.btnDashboard.addActionListener(actionListener);
         view.btnWestBags.addActionListener(actionListener);
         view.btnWestLocation.addActionListener(actionListener);
         view.btnWestSuppliers.addActionListener(actionListener);
@@ -47,15 +53,15 @@ public class IndexController implements ActionListener{
                 break;
             }
             case "btnWestBags":{
-                System.out.println("VIEW BAGS");
+                showCard("bagCard");
+                bagController.initComponent();
                 break;
             }
-            case "btnWestinformation":{
-                System.out.println("VIEW INFORMATION");
+            case "btnDashboard":{
+                showCard("dashboardView");
                 break;
             }
         }
-
     }
 
     private void showCard(String cardName) {
@@ -63,8 +69,4 @@ public class IndexController implements ActionListener{
         card.show(view.panelCenter, cardName);
     }
 
-
-    private SupplierController getSupplierController(){
-        return this.supplierController;
-    }
 }

@@ -11,6 +11,7 @@ public class Stock {
     private Bag bag;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idstock")
     public int getIdstock() {
         return idstock;
@@ -55,7 +56,9 @@ public class Stock {
         return Objects.hash(idstock, quantity, price);
     }
 
-    @OneToOne(mappedBy = "stock")
+    //    @OneToOne(mappedBy = "stock")
+    @OneToOne
+    @JoinColumn(name = "idbag")
     public Bag getBag() {
         return bag;
     }

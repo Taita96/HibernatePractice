@@ -2,6 +2,7 @@ package gm.carlos.app.model.entity;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -14,10 +15,11 @@ public class Bag {
     private Date entryDate;
     private TechnicalSheet technicalSheet;
     private Stock stock;
-    private List<LocationBag> locationBags;
-    private List<Supplier> suppliers;
+    private List<LocationBag> locationBags = new ArrayList<LocationBag>();
+    private List<Supplier> suppliers = new ArrayList<Supplier>();
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idbag")
     public int getIdbag() {
         return idbag;
@@ -84,27 +86,34 @@ public class Bag {
         return Objects.hash(idbag, code, model, status, entryDate);
     }
 
-    @OneToOne
-    @JoinColumn(name = "idbag", referencedColumnName = "idbag", nullable = false)
+    @OneToOne(mappedBy = "bag", cascade = CascadeType.ALL, orphanRemoval = true)
+//    @JoinColumn(name = "idbag", referencedColumnName = "idbag", nullable = false)
     public TechnicalSheet getTechnicalSheet() {
         return technicalSheet;
     }
 
     public void setTechnicalSheet(TechnicalSheet technicalSheet) {
         this.technicalSheet = technicalSheet;
+        if (technicalSheet != null) {
+            technicalSheet.setBag(this);
+        }
     }
 
-    @OneToOne
-    @JoinColumn(name = "idbag", referencedColumnName = "idbag", nullable = false)
+    @OneToOne(mappedBy = "bag", cascade = CascadeType.ALL, orphanRemoval = true)
+//    @JoinColumn(name = "idbag", referencedColumnName = "idbag", nullable = false)
     public Stock getStock() {
         return stock;
     }
 
     public void setStock(Stock stock) {
         this.stock = stock;
+        if (stock != null) {
+            stock.setBag(this);
+        }
     }
 
-    @OneToMany(mappedBy = "bag")
+    //    @OneToMany(mappedBy = "bag")
+    @OneToMany(mappedBy = "bag", cascade = CascadeType.ALL, orphanRemoval = true)
     public List<LocationBag> getLocationBags() {
         return locationBags;
     }
@@ -122,4 +131,6 @@ public class Bag {
     public void setSuppliers(List<Supplier> suppliers) {
         this.suppliers = suppliers;
     }
+
+
 }

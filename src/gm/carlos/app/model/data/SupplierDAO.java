@@ -102,18 +102,16 @@ public class SupplierDAO implements ISupplierDAO {
     }
 
     @Override
-    public Supplier getById(int supplierId) {
-        Session session = null;
+    public Supplier getById(int id) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
         Supplier supplier = null;
         try {
-            session = HibernateUtil.getSessionFactory().openSession();
-            supplier = session.get(Supplier.class, supplierId);
-        } catch (HibernateException e) {
-            e.printStackTrace();
+            supplier = session.createQuery(
+                    "SELECT s FROM Supplier s JOIN FETCH s.bags WHERE s.idsupplier = :id", Supplier.class)
+                    .setParameter("id", id)
+                    .uniqueResult();
         } finally {
-            if (session != null) {
-                session.close();
-            }
+            session.close();
         }
         return supplier;
     }

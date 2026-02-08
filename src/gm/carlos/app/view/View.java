@@ -1,6 +1,8 @@
 package gm.carlos.app.view;
 
 import gm.carlos.app.util.Utilities;
+import gm.carlos.app.view.bag.BagView;
+import gm.carlos.app.view.dashboard.DashboardView;
 import gm.carlos.app.view.location.LocationView;
 import gm.carlos.app.view.supplier.SupplierView;
 
@@ -16,7 +18,7 @@ public class View extends JFrame{
     public JButton btnWestLocation;
     public JButton btnWestBags;
     public JPanel panelWest;
-    public JButton btnWestinformation;
+    public JButton btnDashboard;
 
     //Panel Center
     public JPanel panelCenter;
@@ -24,6 +26,8 @@ public class View extends JFrame{
 
     public final SupplierView supplierView = new SupplierView();
     public final LocationView locationView = new LocationView();
+    public final BagView BAG_VIEW = new BagView();
+    public final DashboardView DASHBOARD_VIEW = new DashboardView();
 
     public View(){
         setTitle("WareHouse");
@@ -42,8 +46,10 @@ public class View extends JFrame{
     private void initCards() {
 
         panelCenter.removeAll();
+        panelCenter.add(DASHBOARD_VIEW.dashboardView,"dashboardView");
         panelCenter.add(supplierView.SupplierCard,"supplierCard");
         panelCenter.add(locationView.locationCard,"locationCard");
+        panelCenter.add(BAG_VIEW.bagCard,"bagCard");
         panelCenter.revalidate();
         panelCenter.repaint();
     }
@@ -59,7 +65,7 @@ public class View extends JFrame{
         Utilities.setBorderBtn(btnWestBags, btnColor);
         btnWestBags.setActionCommand("btnWestBags");
 
-        Utilities.setBorderBtn(btnWestinformation,btnColor);
-        btnWestinformation.setActionCommand("btnWestinformation");
+        Utilities.setBorderBtn(btnDashboard,btnColor);
+        btnDashboard.setActionCommand("btnDashboard");
     }
 }

@@ -21,6 +21,7 @@ public class Location {
     }
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idlocation")
     public int getIdlocation() {
         return idlocation;
@@ -72,5 +73,11 @@ public class Location {
 
     public void setLocation(List<LocationBag> location) {
         this.location = location;
+    }
+
+
+    @Override
+    public String toString() {
+        return "aisle: " + aisle + ", shelf: " + shelf;
     }
 }

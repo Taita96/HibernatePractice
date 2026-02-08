@@ -2,7 +2,6 @@ package gm.carlos.app.controller.location;
 
 import gm.carlos.app.model.Model;
 import gm.carlos.app.model.entity.Location;
-import gm.carlos.app.model.entity.Supplier;
 import gm.carlos.app.util.Utilities;
 import gm.carlos.app.view.location.LocationView;
 
