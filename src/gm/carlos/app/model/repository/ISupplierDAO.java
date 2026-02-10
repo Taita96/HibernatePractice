@@ -11,4 +11,5 @@ public interface ISupplierDAO {
     boolean delete(Supplier supplier);
     List<Supplier> getAll();
     Supplier getById(int supplierId);
+    Supplier findByNameAndContact(String name, String contact);
 }

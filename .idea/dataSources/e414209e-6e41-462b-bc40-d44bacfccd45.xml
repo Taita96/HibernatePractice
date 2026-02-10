@@ -1213,246 +1213,218 @@
     </column>
     <column id="311" parent="303" name="code">
       <Position>2</Position>
-      <DataType>varchar(50)|0s</DataType>
-      <NotNull>1</NotNull>
+      <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="312" parent="303" name="model">
+    <column id="312" parent="303" name="entry_date">
       <Position>3</Position>
-      <DataType>varchar(100)|0s</DataType>
-      <NotNull>1</NotNull>
+      <DataType>date|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="313" parent="303" name="status">
+    <column id="313" parent="303" name="model">
       <Position>4</Position>
-      <DataType>enum(&apos;ACTIVE&apos;, &apos;INACTIVE&apos;)|0e</DataType>
+      <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="314" parent="303" name="entry_date">
+    <column id="314" parent="303" name="status">
       <Position>5</Position>
-      <DataType>timestamp|0s</DataType>
+      <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="315" parent="303" name="code">
-      <ColNames>code</ColNames>
-      <Unique>1</Unique>
-      <Type>btree</Type>
-    </index>
-    <key id="316" parent="303" name="PRIMARY">
+    <key id="315" parent="303" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>idbag</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="317" parent="303" name="code">
-      <ColNames>code</ColNames>
-      <UnderlyingIndexName>code</UnderlyingIndexName>
-    </key>
-    <column id="318" parent="304" name="idbag">
+    <column id="316" parent="304" name="idbag">
       <Position>1</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="319" parent="304" name="idsupplier">
+    <column id="317" parent="304" name="idsupplier">
       <Position>2</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="320" parent="304" name="idsupplier">
+    <index id="318" parent="304" name="FKqaprvrme7i2ardtbd2ypfilir">
+      <ColNames>idbag</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="319" parent="304" name="FKbtn36urqco71gbm0el2jf37i8">
       <ColNames>idsupplier</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="321" parent="304" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>idbag
-idsupplier</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <foreign-key id="322" parent="304" name="bag_supplier_ibfk_1">
+    <foreign-key id="320" parent="304" name="FKqaprvrme7i2ardtbd2ypfilir">
       <ColNames>idbag</ColNames>
       <RefTableName>bag</RefTableName>
       <RefColNames>idbag</RefColNames>
     </foreign-key>
-    <foreign-key id="323" parent="304" name="bag_supplier_ibfk_2">
+    <foreign-key id="321" parent="304" name="FKbtn36urqco71gbm0el2jf37i8">
       <ColNames>idsupplier</ColNames>
       <RefTableName>supplier</RefTableName>
       <RefColNames>idsupplier</RefColNames>
     </foreign-key>
-    <column id="324" parent="305" name="idlocation">
+    <column id="322" parent="305" name="idlocation">
       <Position>1</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="325" parent="305" name="aisle">
+    <column id="323" parent="305" name="aisle">
       <Position>2</Position>
-      <DataType>varchar(50)|0s</DataType>
-      <NotNull>1</NotNull>
+      <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="326" parent="305" name="shelf">
+    <column id="324" parent="305" name="shelf">
       <Position>3</Position>
-      <DataType>varchar(50)|0s</DataType>
-      <NotNull>1</NotNull>
+      <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="327" parent="305" name="PRIMARY">
+    <key id="325" parent="305" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>idlocation</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="328" parent="306" name="id">
+    <column id="326" parent="306" name="id">
       <Position>1</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="329" parent="306" name="idlocation">
+    <column id="327" parent="306" name="idbag">
       <Position>2</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="330" parent="306" name="idbag">
+    <column id="328" parent="306" name="idlocation">
       <Position>3</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="331" parent="306" name="id_UNIQUE">
-      <ColNames>id</ColNames>
-      <Unique>1</Unique>
-      <Type>btree</Type>
-    </index>
-    <index id="332" parent="306" name="idlocation">
-      <ColNames>idlocation</ColNames>
-      <Unique>1</Unique>
-      <Type>btree</Type>
-    </index>
-    <key id="333" parent="306" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <key id="334" parent="306" name="id_UNIQUE">
-      <ColNames>id</ColNames>
-      <UnderlyingIndexName>id_UNIQUE</UnderlyingIndexName>
-    </key>
-    <key id="335" parent="306" name="idlocation">
-      <ColNames>idlocation</ColNames>
-      <UnderlyingIndexName>idlocation</UnderlyingIndexName>
-    </key>
-    <column id="336" parent="307" name="idstock">
-      <Position>1</Position>
-      <DataType>int|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="337" parent="307" name="quantity">
-      <Position>2</Position>
-      <DataType>int|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="338" parent="307" name="price">
-      <Position>3</Position>
-      <DataType>int|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="339" parent="307" name="idbag">
-      <Position>4</Position>
-      <DataType>int|0s</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <index id="340" parent="307" name="idbag">
+    <index id="329" parent="306" name="FKg6f472j99v54nyqkv38c2icmh">
       <ColNames>idbag</ColNames>
-      <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="341" parent="307" name="PRIMARY">
+    <index id="330" parent="306" name="FK17yt7cow2obei5iap5fduo3b2">
+      <ColNames>idlocation</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="331" parent="306" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>idstock</ColNames>
+      <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="342" parent="307" name="idbag">
-      <ColNames>idbag</ColNames>
-      <UnderlyingIndexName>idbag</UnderlyingIndexName>
-    </key>
-    <foreign-key id="343" parent="307" name="stock_ibfk_1">
+    <foreign-key id="332" parent="306" name="FKg6f472j99v54nyqkv38c2icmh">
       <ColNames>idbag</ColNames>
       <RefTableName>bag</RefTableName>
       <RefColNames>idbag</RefColNames>
     </foreign-key>
-    <column id="344" parent="308" name="idsupplier">
+    <foreign-key id="333" parent="306" name="FK17yt7cow2obei5iap5fduo3b2">
+      <ColNames>idlocation</ColNames>
+      <RefTableName>location</RefTableName>
+      <RefColNames>idlocation</RefColNames>
+    </foreign-key>
+    <column id="334" parent="307" name="idstock">
       <Position>1</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="345" parent="308" name="name">
+    <column id="335" parent="307" name="price">
       <Position>2</Position>
-      <DataType>varchar(100)|0s</DataType>
-      <NotNull>1</NotNull>
+      <DataType>double|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="346" parent="308" name="contact">
+    <column id="336" parent="307" name="quantity">
       <Position>3</Position>
-      <DataType>varchar(100)|0s</DataType>
+      <DataType>int|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="347" parent="308" name="PRIMARY">
+    <column id="337" parent="307" name="idbag">
+      <Position>4</Position>
+      <DataType>int|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="338" parent="307" name="FK81ocjo482w2bf38wmvp5ef8dn">
+      <ColNames>idbag</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="339" parent="307" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>idstock</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="340" parent="307" name="FK81ocjo482w2bf38wmvp5ef8dn">
+      <ColNames>idbag</ColNames>
+      <RefTableName>bag</RefTableName>
+      <RefColNames>idbag</RefColNames>
+    </foreign-key>
+    <column id="341" parent="308" name="idsupplier">
+      <Position>1</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="342" parent="308" name="contact">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="343" parent="308" name="name">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="344" parent="308" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>idsupplier</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="348" parent="309" name="idtechnical">
+    <column id="345" parent="309" name="idtechnical">
       <Position>1</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="349" parent="309" name="material">
+    <column id="346" parent="309" name="color">
       <Position>2</Position>
-      <DataType>varchar(50)|0s</DataType>
+      <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="350" parent="309" name="weight">
+    <column id="347" parent="309" name="material">
       <Position>3</Position>
-      <DataType>decimal(6,2 digit)|0s</DataType>
+      <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="351" parent="309" name="color">
+    <column id="348" parent="309" name="weight">
       <Position>4</Position>
-      <DataType>varchar(50)|0s</DataType>
+      <DataType>decimal(19,2 digit)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="352" parent="309" name="idbag">
+    <column id="349" parent="309" name="idbag">
       <Position>5</Position>
       <DataType>int|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="353" parent="309" name="idbag">
+    <index id="350" parent="309" name="FKjosc8nono1se3ts69u5u7hu30">
       <ColNames>idbag</ColNames>
-      <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="354" parent="309" name="PRIMARY">
+    <key id="351" parent="309" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>idtechnical</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="355" parent="309" name="idbag">
-      <ColNames>idbag</ColNames>
-      <UnderlyingIndexName>idbag</UnderlyingIndexName>
-    </key>
-    <foreign-key id="356" parent="309" name="technical_sheet_ibfk_1">
+    <foreign-key id="352" parent="309" name="FKjosc8nono1se3ts69u5u7hu30">
       <ColNames>idbag</ColNames>
       <RefTableName>bag</RefTableName>
       <RefColNames>idbag</RefColNames>

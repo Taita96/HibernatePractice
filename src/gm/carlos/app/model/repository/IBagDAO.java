@@ -12,5 +12,8 @@ public interface IBagDAO {
     List<Bag> getAll();
     Bag getById(int bagId);
     List<Bag> getAllWithDetails();
+    boolean softDeleteById(int bagId);
+    boolean getByCode(String code);
+    String getLastCode();
 
 }

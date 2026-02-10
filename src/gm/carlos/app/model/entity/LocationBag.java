@@ -35,7 +35,7 @@ public class LocationBag {
     }
 
     @ManyToOne
-    @JoinColumn(name = "idbag", referencedColumnName = "idbag", nullable = false)
+    @JoinColumn(name = "idbag", referencedColumnName = "idbag",unique = false,nullable = false)
     public Bag getBag() {
         return bag;
     }
@@ -45,7 +45,7 @@ public class LocationBag {
     }
 
     @ManyToOne
-    @JoinColumn(name = "idlocation", referencedColumnName = "idlocation", nullable = false)
+    @JoinColumn(name = "idlocation", referencedColumnName = "idlocation",unique = false,nullable = false)
     public Location getLocationBags() {
         return locationBags;
     }

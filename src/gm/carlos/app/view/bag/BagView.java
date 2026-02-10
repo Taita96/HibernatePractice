@@ -67,7 +67,7 @@ public class BagView {
     }
 
     private void initSpinner(){
-        spQuantity.setModel(new SpinnerNumberModel(1,1,10000,1));
+        spQuantity.setModel(new SpinnerNumberModel(1,0,10000,1));
         spWeight.setModel(new SpinnerNumberModel(1.0,1.0,10000.0,1.0));
         spPrice.setModel(new SpinnerNumberModel(1.0,1.0,10000.0,1.0));
     }

@@ -27,4 +27,8 @@ public class LocationService {
     public Location getById(int supplierId ){
         return locationDAO.getById(supplierId);
     }
+
+    public Location findByAisleAndShelf(String aisle, String shelf){
+        return locationDAO.findByAisleAndShelf(aisle,shelf);
+    }
 }

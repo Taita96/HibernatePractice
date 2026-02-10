@@ -34,7 +34,7 @@ public class DashboardView {
         dtmTableDasboard = new DefaultTableModel() {
             @Override
             public boolean isCellEditable(int row, int column) {
-                return column != 0;
+                return false;
             }
         };
         table.setModel(dtmTableDasboard);

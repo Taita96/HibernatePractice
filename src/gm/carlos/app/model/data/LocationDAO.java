@@ -1,5 +1,6 @@
 package gm.carlos.app.model.data;
 
+import gm.carlos.app.model.entity.Bag;
 import gm.carlos.app.model.entity.Location;
 import gm.carlos.app.model.entity.Supplier;
 import gm.carlos.app.model.repository.ILocationDAO;
@@ -116,5 +117,33 @@ public class LocationDAO implements ILocationDAO {
             }
         }
         return location;
+    }
+
+    @Override
+    public Location findByAisleAndShelf(String aisle, String shelf) {
+        Session session = null;
+        Location location = null;
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+
+            String hql = "SELECT DISTINCT l " +
+                    "FROM Location l " +
+                    "Where l.aisle like :aisle " +
+                    "AND l.shelf like :shelf";
+
+            location = session.createQuery(hql, Location.class)
+                    .setParameter("aisle", "%" + aisle + "%")
+                    .setParameter("shelf", "%" + shelf + "%")
+                    .uniqueResult();
+
+            return location;
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+        return null;
     }
 }

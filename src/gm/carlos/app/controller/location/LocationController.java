@@ -2,6 +2,7 @@ package gm.carlos.app.controller.location;
 
 import gm.carlos.app.model.Model;
 import gm.carlos.app.model.entity.Location;
+import gm.carlos.app.model.repository.ITransitionScreen;
 import gm.carlos.app.util.Utilities;
 import gm.carlos.app.view.location.LocationView;
 
@@ -20,9 +21,12 @@ public class LocationController implements ActionListener, ListSelectionListener
     private Model model;
     Location currentLocation;
 
-    public LocationController(LocationView locationView, Model model) {
+    private ITransitionScreen navigation;
+
+    public LocationController(LocationView locationView, Model model,ITransitionScreen navigation) {
         this.locationView = locationView;
         this.model = model;
+        this.navigation = navigation;
         addActionListener(this);
         addListSelectionListener(this);
         addTableModelListener(this);
@@ -66,7 +70,7 @@ public class LocationController implements ActionListener, ListSelectionListener
                 break;
             }
             case "btnTableGoHome": {
-                System.out.println("Home Table");
+                navigation.confirmNavigation(currentLocation, n -> {navigation.goToDashboard();});
                 break;
             }
             case "btnTableDelete": {
@@ -74,6 +78,10 @@ public class LocationController implements ActionListener, ListSelectionListener
                 break;
             }
         }
+    }
+
+    public Location getCurrentLocation() {
+        return currentLocation;
     }
 
     private void delete() {
@@ -145,11 +153,12 @@ public class LocationController implements ActionListener, ListSelectionListener
     }
 
     private void cleanForm() {
+
         locationView.txtShelf.setText("");
         locationView.txtAisle.setText("");
     }
 
-    private void cleanUI(){
+    public void cleanUI(){
         currentLocation = null;
         reloadTable();
         cleanForm();

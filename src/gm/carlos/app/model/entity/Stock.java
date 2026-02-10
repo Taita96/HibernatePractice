@@ -7,7 +7,7 @@ import java.util.Objects;
 public class Stock {
     private int idstock;
     private int quantity;
-    private int price;
+    private double price;
     private Bag bag;
 
     @Id
@@ -33,11 +33,11 @@ public class Stock {
 
     @Basic
     @Column(name = "price")
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

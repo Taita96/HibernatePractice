@@ -33,4 +33,15 @@ public class BagService {
         return bagDAO.getAllWithDetails();
     }
 
+    public boolean softDeleteById(int bagId){
+        return bagDAO.softDeleteById(bagId);
+    }
+
+    public boolean getByCode(String code){
+        return bagDAO.getByCode(code);
+    }
+
+    public String getLastCode(){
+        return bagDAO.getLastCode();
+    }
 }

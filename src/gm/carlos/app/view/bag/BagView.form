@@ -152,7 +152,7 @@
                         <properties>
                           <background color="-1"/>
                           <columns value="12"/>
-                          <font name="Fira Code" size="12" style="1"/>
+                          <font name="Fira Code" size="12" style="0"/>
                           <foreground color="-16777216"/>
                         </properties>
                       </component>
@@ -168,7 +168,7 @@
                             <properties>
                               <font name="Roboto" size="12" style="1"/>
                               <foreground color="-16777216"/>
-                              <text value="Code"/>
+                              <text value="Last Code"/>
                             </properties>
                           </component>
                           <component id="e8c73" class="javax.swing.JTextField" binding="txtLastCode">
@@ -176,6 +176,7 @@
                             <properties>
                               <background color="-1"/>
                               <columns value="12"/>
+                              <editable value="false"/>
                               <font name="Fira Code" size="12" style="1"/>
                               <foreground color="-16777216"/>
                             </properties>
@@ -382,7 +383,7 @@
                         <properties>
                           <background color="-1249812"/>
                           <enabled value="true"/>
-                          <font name="Fira Code" size="12" style="1"/>
+                          <font name="Fira Code" size="12" style="0"/>
                           <foreground color="-16777216"/>
                         </properties>
                       </component>

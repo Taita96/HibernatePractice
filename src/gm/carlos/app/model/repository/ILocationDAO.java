@@ -11,4 +11,5 @@ public interface ILocationDAO {
     boolean delete(Location location);
     List<Location> getAll();
     Location getById(int locationId);
+    Location findByAisleAndShelf(String aisle, String shelf);
 }

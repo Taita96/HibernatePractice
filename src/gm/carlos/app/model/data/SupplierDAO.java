@@ -106,14 +106,53 @@ public class SupplierDAO implements ISupplierDAO {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Supplier supplier = null;
         try {
-            supplier = session.createQuery(
-                    "SELECT s FROM Supplier s JOIN FETCH s.bags WHERE s.idsupplier = :id", Supplier.class)
+
+            String hql = "SELECT s " +
+                    "FROM Supplier s " +
+                    "JOIN FETCH s.bags " +
+                    "WHERE s.idsupplier = :id";
+
+            supplier = session.createQuery(hql, Supplier.class)
                     .setParameter("id", id)
                     .uniqueResult();
+            return supplier;
+        } catch (HibernateException e) {
+            e.printStackTrace();
         } finally {
-            session.close();
+            if (session != null) {
+                session.close();
+            }
         }
-        return supplier;
+        return null;
+    }
+
+    @Override
+    public Supplier findByNameAndContact(String name, String contact) {
+        Session session = null;
+        Supplier supplier = null;
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+
+            String hql = "SELECT DISTINCT s " +
+                    "FROM Supplier s " +
+                    "Where s.name like :name " +
+                    "AND s.contact like :contact";
+
+            supplier = session.createQuery(hql, Supplier.class)
+                    .setParameter("name", "%" + name + "%")
+                    .setParameter("contact", "%" + contact + "%")
+                    .uniqueResult();
+
+            supplier.getBags().size();
+            return supplier;
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+        return null;
     }
 
 }

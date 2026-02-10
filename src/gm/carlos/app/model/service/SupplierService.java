@@ -27,4 +27,8 @@ public class SupplierService {
     public Supplier getByIdSupplier(int supplierId ){
         return supplierDAO.getById(supplierId);
     }
+
+    public  Supplier findByNameAndContact(String name, String contact){
+        return supplierDAO.findByNameAndContact(name,contact);
+    }
 }

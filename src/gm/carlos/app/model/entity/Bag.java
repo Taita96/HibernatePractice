@@ -8,7 +8,7 @@ import java.util.Objects;
 
 @Entity
 public class Bag {
-    private int idbag;
+    private Integer idbag;
     private String code;
     private String model;
     private String status;
@@ -21,16 +21,16 @@ public class Bag {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idbag")
-    public int getIdbag() {
+    public Integer getIdbag() {
         return idbag;
     }
 
-    public void setIdbag(int idbag) {
+    public void setIdbag(Integer idbag) {
         this.idbag = idbag;
     }
 
     @Basic
-    @Column(name = "code")
+    @Column(name = "code",unique = true)
     public String getCode() {
         return code;
     }
@@ -74,11 +74,8 @@ public class Bag {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Bag bag = (Bag) o;
-        return idbag == bag.idbag &&
-                Objects.equals(code, bag.code) &&
-                Objects.equals(model, bag.model) &&
-                Objects.equals(status, bag.status) &&
-                Objects.equals(entryDate, bag.entryDate);
+        return idbag.equals(bag.idbag) &&
+                code.equals(bag.code);
     }
 
     @Override

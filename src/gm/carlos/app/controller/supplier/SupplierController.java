@@ -2,6 +2,7 @@ package gm.carlos.app.controller.supplier;
 
 import gm.carlos.app.model.Model;
 import gm.carlos.app.model.entity.Supplier;
+import gm.carlos.app.model.repository.ITransitionScreen;
 import gm.carlos.app.util.Utilities;
 import gm.carlos.app.view.supplier.SupplierView;
 
@@ -20,9 +21,12 @@ public class SupplierController implements ActionListener, ListSelectionListener
     private Model model;
     Supplier currentSupplier;
 
-    public SupplierController(SupplierView supplierView, Model model) {
+    private ITransitionScreen navigation;
+
+    public SupplierController(SupplierView supplierView, Model model,ITransitionScreen navigation) {
         this.supplierView = supplierView;
         this.model = model;
+        this.navigation = navigation;
         addActionListener(this);
         addListSelectionListener(this);
         addTableModelListener(this);
@@ -68,7 +72,7 @@ public class SupplierController implements ActionListener, ListSelectionListener
                 break;
             }
             case "btnTableGoHome": {
-                System.out.println("Home Table");
+                navigation.confirmNavigation(currentSupplier, n -> {navigation.goToDashboard();});
                 break;
             }
             case "btnTableSupplierDelete": {
@@ -76,6 +80,10 @@ public class SupplierController implements ActionListener, ListSelectionListener
                 break;
             }
         }
+    }
+
+    public Supplier getCurrentSupplier() {
+        return currentSupplier;
     }
 
     private void delete() {
@@ -156,7 +164,7 @@ public class SupplierController implements ActionListener, ListSelectionListener
         supplierView.txtSupplierContact.setText("");
     }
 
-    private void cleanUI(){
+    public void cleanUI(){
         currentSupplier = null;
         reloadTable();
         cleanForm();
