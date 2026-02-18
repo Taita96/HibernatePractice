@@ -2,47 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0a437967-c4b2-46c8-9a27-c82b810f1f89" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/gm/carlos/app/model/repository/ITransitionScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e414209e-6e41-462b-bc40-d44bacfccd45.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/e414209e-6e41-462b-bc40-d44bacfccd45.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/gm/carlos/app/view/conecction/ConnectionView.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/gm/carlos/app/view/conecction/ConnectionView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/controller/IndexController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/controller/IndexController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/controller/bag/BagController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/controller/bag/BagController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/controller/dasboard/DashboardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/controller/dasboard/DashboardController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/controller/location/LocationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/controller/location/LocationController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/model/data/BagDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/model/data/BagDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/model/data/LocationDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/model/data/LocationDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/model/data/SupplierDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/model/data/SupplierDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/model/entity/Bag.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/model/entity/Bag.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/model/entity/LocationBag.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/model/entity/LocationBag.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/model/entity/Stock.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/model/entity/Stock.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/model/repository/IBagDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/model/repository/IBagDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/model/repository/ILocationDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/model/repository/ILocationDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/model/repository/ISupplierDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/model/repository/ISupplierDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/model/service/BagService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/model/service/BagService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/model/service/LocationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/model/service/LocationService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/model/service/SupplierService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/model/service/SupplierService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/view/bag/BagView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/view/bag/BagView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/view/dashboard/DashboardView$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/view/dashboard/DashboardView$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/util/HibernateUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/util/HibernateUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/view/View.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/view/View.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/view/supplier/SupplierView$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/view/supplier/SupplierView$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/view/supplier/SupplierView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/view/supplier/SupplierView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gm/carlos/app/controller/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gm/carlos/app/controller/IndexController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gm/carlos/app/controller/bag/BagController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gm/carlos/app/controller/bag/BagController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gm/carlos/app/controller/dasboard/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gm/carlos/app/controller/dasboard/DashboardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gm/carlos/app/controller/location/LocationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gm/carlos/app/controller/location/LocationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gm/carlos/app/controller/supplier/SupplierController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gm/carlos/app/controller/supplier/SupplierController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gm/carlos/app/model/data/BagDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gm/carlos/app/model/data/BagDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gm/carlos/app/model/data/LocationDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gm/carlos/app/model/data/LocationDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gm/carlos/app/model/data/SupplierDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gm/carlos/app/model/data/SupplierDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gm/carlos/app/model/entity/Bag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gm/carlos/app/model/entity/Bag.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gm/carlos/app/model/entity/LocationBag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gm/carlos/app/model/entity/LocationBag.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gm/carlos/app/model/entity/Stock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gm/carlos/app/model/entity/Stock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gm/carlos/app/model/repository/IBagDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gm/carlos/app/model/repository/IBagDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gm/carlos/app/model/repository/ILocationDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gm/carlos/app/model/repository/ILocationDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gm/carlos/app/model/repository/ISupplierDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gm/carlos/app/model/repository/ISupplierDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gm/carlos/app/model/service/BagService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gm/carlos/app/model/service/BagService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gm/carlos/app/model/service/LocationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gm/carlos/app/model/service/LocationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gm/carlos/app/model/service/SupplierService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gm/carlos/app/model/service/SupplierService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gm/carlos/app/view/bag/BagView.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/gm/carlos/app/view/bag/BagView.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gm/carlos/app/view/bag/BagView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gm/carlos/app/view/bag/BagView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gm/carlos/app/view/dashboard/DashboardView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gm/carlos/app/view/dashboard/DashboardView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gm/carlos/app/util/HibernateUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gm/carlos/app/util/HibernateUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gm/carlos/app/view/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gm/carlos/app/view/View.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gm/carlos/app/view/supplier/SupplierView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gm/carlos/app/view/supplier/SupplierView.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -86,8 +59,8 @@
         <option value="hibernate-configuration-5.2" />
         <option value="hibernate-main-5.2" />
         <option value="Enum" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -177,7 +150,11 @@
       <workItem from="1770636597223" duration="7789000" />
       <workItem from="1770651931628" duration="9884000" />
       <workItem from="1770720348351" duration="5636000" />
-      <workItem from="1770739538085" duration="4675000" />
+      <workItem from="1770739538085" duration="4818000" />
+      <workItem from="1770830579034" duration="221000" />
+      <workItem from="1771255870677" duration="12764000" />
+      <workItem from="1771342680222" duration="4157000" />
+      <workItem from="1771366425665" duration="316000" />
     </task>
     <servers />
   </component>

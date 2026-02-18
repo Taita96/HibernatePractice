@@ -9,6 +9,7 @@ import gm.carlos.app.model.entity.Bag;
 import gm.carlos.app.model.entity.Location;
 import gm.carlos.app.model.entity.Supplier;
 import gm.carlos.app.model.repository.ITransitionScreen;
+import gm.carlos.app.util.HibernateUtil;
 import gm.carlos.app.util.Utilities;
 import gm.carlos.app.view.View;
 
@@ -24,19 +25,20 @@ public class IndexController implements ActionListener, ITransitionScreen {
     private View view;
     private Model model;
 
-    private final SupplierController supplierController;
-    private final LocationController locationController;
-    private final BagController bagController;
-    private final DashboardController dashboardController;
+    private SupplierController supplierController;
+    private LocationController locationController;
+    private BagController bagController;
+    private DashboardController dashboardController;
 
     public IndexController(View view, Model model) {
         this.view = view;
         this.model = model;
-        this.supplierController = new SupplierController(view.supplierView, model, this);
-        this.locationController = new LocationController(view.locationView, model, this);
-        this.bagController = new BagController(view.BAG_VIEW, model, this);
-        this.dashboardController = new DashboardController(view.DASHBOARD_VIEW, model, this);
         addActionListener(this);
+        setNavigationEnabled(false);
+//        this.supplierController = new SupplierController(view.supplierView, model, this);
+//        this.locationController = new LocationController(view.locationView, model, this);
+//        this.bagController = new BagController(view.BAG_VIEW, model, this);
+//        this.dashboardController = new DashboardController(view.DASHBOARD_VIEW, model, this);
     }
 
     private void addActionListener(ActionListener actionListener) {
@@ -44,6 +46,7 @@ public class IndexController implements ActionListener, ITransitionScreen {
         view.btnWestBags.addActionListener(actionListener);
         view.btnWestLocation.addActionListener(actionListener);
         view.btnWestSuppliers.addActionListener(actionListener);
+        view.itemConectar.addActionListener(actionListener);
     }
 
     @Override
@@ -52,34 +55,106 @@ public class IndexController implements ActionListener, ITransitionScreen {
 
         switch (evt) {
             case "btnWestSuppliers": {
-                navigateControl(n -> {goToSupplier();});
+                navigateControl(n -> {
+                    goToSupplier();
+                });
                 break;
             }
             case "btnWestLocation": {
-                navigateControl(n -> {goToLocation();});
+                navigateControl(n -> {
+                    goToLocation();
+                });
                 break;
             }
             case "btnWestBags": {
-                navigateControl(n -> {goToBag();});
+                navigateControl(n -> {
+                    goToBag();
+                });
                 break;
             }
             case "btnDashboard": {
-                navigateControl(n -> {goToDashboard();});
+                navigateControl(n -> {
+                    goToDashboard();
+                });
+                break;
+            }
+            case "Conectar": {
+                connected();
+                break;
+            }
+            case "Desconectar": {
+                disconnected();
                 break;
             }
         }
     }
 
+    private void disconnected() {
+
+        if (HibernateUtil.isConnected()) {
+
+            HibernateUtil.disconnect();
+            panelNoConnection();
+            setNavigationEnabled(false);
+            view.itemConectar.setText("Conectar");
+            view.itemConectar.setActionCommand("Conectar");
+            JOptionPane.showMessageDialog(null, "Database disconnected.");
+        }
+    }
+
+    private void panelNoConnection(){
+        view.panelCenter.removeAll();
+        view.panelCenter.add(view.CONNECTION_VIEW.mainPanel,"CardConecction");
+        view.panelCenter.revalidate();
+        view.panelCenter.repaint();
+    }
+
+    private void initCards() {
+
+        view.panelCenter.removeAll();
+        view.panelCenter.add(view.DASHBOARD_VIEW.dashboardView,"dashboardView");
+        view.panelCenter.add(view.supplierView.SupplierCard,"supplierCard");
+        view.panelCenter.add(view.locationView.locationCard,"locationCard");
+        view.panelCenter.add(view.BAG_VIEW.bagCard,"bagCard");
+        view.panelCenter.revalidate();
+        view.panelCenter.repaint();
+    }
+
+
+    private void connected() {
+
+        if (!HibernateUtil.isConnected()) {
+            HibernateUtil.connect();
+
+            view.itemConectar.setText("Desconectar");
+            view.itemConectar.setActionCommand("Desconectar");
+            setNavigationEnabled(true);
+            initCards();
+            // Crear controladores ahora que hay conexión
+            this.supplierController = new SupplierController(view.supplierView, model, this);
+            this.locationController = new LocationController(view.locationView, model, this);
+            this.bagController = new BagController(view.BAG_VIEW, model, this);
+            this.dashboardController = new DashboardController(view.DASHBOARD_VIEW, model, this);
+        }
+    }
+
+
     @Override
     public void navigateControl(Consumer<ITransitionScreen> accion) {
+
+        if (!HibernateUtil.isConnected()) {
+            JOptionPane.showMessageDialog(null, "You must connect to the database first.");
+            return;
+        }
+
         if (bagController.getCurrentbag() != null) {
-            confirmNavigation(bagController.getCurrentbag(),accion);
+            confirmNavigation(bagController.getCurrentbag(), accion);
         } else if (supplierController.getCurrentSupplier() != null) {
-            confirmNavigation(supplierController.getCurrentSupplier(),accion);
+            confirmNavigation(supplierController.getCurrentSupplier(), accion);
         } else if (locationController.getCurrentLocation() != null) {
-            confirmNavigation(locationController.getCurrentLocation(),accion);
+            confirmNavigation(locationController.getCurrentLocation(), accion);
         } else {
-           goScreen(accion);
+            goScreen(accion);
         }
     }
 
@@ -118,6 +193,16 @@ public class IndexController implements ActionListener, ITransitionScreen {
         }
     }
 
+    private void setNavigationEnabled(boolean enabled) {
+
+        view.btnDashboard.setEnabled(enabled);
+        view.btnWestBags.setEnabled(enabled);
+        view.btnWestLocation.setEnabled(enabled);
+        view.btnWestSuppliers.setEnabled(enabled);
+
+    }
+
+
     @Override
     public void goToBag() {
         showCard("bagCard");
@@ -150,4 +235,6 @@ public class IndexController implements ActionListener, ITransitionScreen {
         CardLayout card = (CardLayout) view.panelCenter.getLayout();
         card.show(view.panelCenter, cardName);
     }
+
+
 }

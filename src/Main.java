@@ -55,9 +55,9 @@ public class Main {
                 new IndexController(view,model);
             });
         } catch (Exception e) {
-            e.printStackTrace();
+//            e.printStackTrace();
         } finally {
-            HibernateUtil.shutdown();
+//            HibernateUtil.getSessionFactory().close();
         }
     }
 }

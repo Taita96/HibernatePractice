@@ -30,7 +30,6 @@ public class SupplierView extends JPanel {
     }
 
     private void initTables() {
-
         dtmTableSupplier = new DefaultTableModel() {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -38,7 +37,6 @@ public class SupplierView extends JPanel {
             }
         };
         tableSuppliers.setModel(dtmTableSupplier);
-
     }
 
 
