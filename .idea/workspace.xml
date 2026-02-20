@@ -1,57 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Practica2UD3CarlosGonzalez2:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="0a437967-c4b2-46c8-9a27-c82b810f1f89" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/controller/IndexController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/controller/IndexController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/controller/bag/BagController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/controller/bag/BagController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/controller/dasboard/DashboardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/controller/dasboard/DashboardController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/model/data/BagDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/model/data/BagDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/model/data/LocationBagDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/model/data/LocationBagDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/model/data/LocationDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/model/data/LocationDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/model/data/StockDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/model/data/StockDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/model/data/SupplierDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/model/data/SupplierDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/model/data/TechnicalSheetDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/model/data/TechnicalSheetDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/model/service/BagService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/model/service/BagService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/model/service/LocationBagService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/model/service/LocationBagService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/model/service/LocationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/model/service/LocationService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/model/service/StockService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/model/service/StockService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/model/service/SupplierService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/model/service/SupplierService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/model/service/TechnicalSheetService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/model/service/TechnicalSheetService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/util/HibernateUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/util/HibernateUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/util/Utilities$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/util/Utilities$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/util/Utilities.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/util/Utilities.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/view/View.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Practica2UD3CarlosGonzalez2/gm/carlos/app/view/View.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gm/carlos/app/controller/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gm/carlos/app/controller/IndexController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gm/carlos/app/controller/bag/BagController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gm/carlos/app/controller/bag/BagController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gm/carlos/app/controller/dasboard/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gm/carlos/app/controller/dasboard/DashboardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gm/carlos/app/controller/location/LocationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gm/carlos/app/controller/location/LocationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gm/carlos/app/controller/supplier/SupplierController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gm/carlos/app/controller/supplier/SupplierController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gm/carlos/app/model/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gm/carlos/app/model/Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gm/carlos/app/model/data/BagDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gm/carlos/app/model/data/BagDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gm/carlos/app/model/data/LocationBagDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gm/carlos/app/model/data/LocationBagDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gm/carlos/app/model/data/LocationDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gm/carlos/app/model/data/LocationDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gm/carlos/app/model/data/StockDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gm/carlos/app/model/data/StockDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gm/carlos/app/model/data/SupplierDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gm/carlos/app/model/data/SupplierDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gm/carlos/app/model/data/TechnicalSheetDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gm/carlos/app/model/data/TechnicalSheetDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gm/carlos/app/model/repository/IBagDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gm/carlos/app/model/repository/IBagDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gm/carlos/app/model/repository/ILocationBagDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gm/carlos/app/model/repository/ILocationBagDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gm/carlos/app/model/repository/ILocationDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gm/carlos/app/model/repository/ILocationDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gm/carlos/app/model/repository/IStockDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gm/carlos/app/model/repository/IStockDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gm/carlos/app/model/repository/ISupplierDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gm/carlos/app/model/repository/ISupplierDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gm/carlos/app/model/repository/ITechnicalSheetDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gm/carlos/app/model/repository/ITechnicalSheetDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gm/carlos/app/model/repository/ITransitionScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gm/carlos/app/model/repository/ITransitionScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gm/carlos/app/model/service/BagService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gm/carlos/app/model/service/BagService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gm/carlos/app/model/service/LocationBagService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gm/carlos/app/model/service/LocationBagService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gm/carlos/app/model/service/LocationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gm/carlos/app/model/service/LocationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gm/carlos/app/model/service/StockService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gm/carlos/app/model/service/StockService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gm/carlos/app/model/service/SupplierService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gm/carlos/app/model/service/SupplierService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gm/carlos/app/model/service/TechnicalSheetService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gm/carlos/app/model/service/TechnicalSheetService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gm/carlos/app/util/HibernateUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gm/carlos/app/util/HibernateUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gm/carlos/app/util/Utilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gm/carlos/app/util/Utilities.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gm/carlos/app/view/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gm/carlos/app/view/View.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Practica2UD3CarlosGonzalez2_jar/Practica2UD3CarlosGonzalez2.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Practica2UD3CarlosGonzalez2_jar/Practica2UD3CarlosGonzalez2.jar" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -196,7 +153,8 @@
       <workItem from="1771519968164" duration="1594000" />
       <workItem from="1771522144129" duration="623000" />
       <workItem from="1771580185697" duration="1244000" />
-      <workItem from="1771627830947" duration="1300000" />
+      <workItem from="1771627830947" duration="1477000" />
+      <workItem from="1771629578983" duration="203000" />
     </task>
     <servers />
   </component>
