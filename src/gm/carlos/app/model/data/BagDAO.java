@@ -10,8 +10,29 @@ import org.hibernate.Session;
 import javax.persistence.Query;
 import java.util.List;
 
+/**
+ * Implementación de {@link IBagDAO} utilizando Hibernate para el acceso a datos.
+ *
+ * <p>Esta clase se encarga de realizar todas las operaciones de persistencia
+ * relacionadas con la entidad {@link Bag}, gestionando manualmente:</p>
+ * <ul>
+ *     <li>Apertura y cierre de sesiones.</li>
+ *     <li>Control de transacciones.</li>
+ *     <li>Rollback en caso de error.</li>
+ *     <li>Ejecución de consultas HQL.</li>
+ * </ul>
+ *
+ * <p>Sigue el patrón DAO, separando la lógica de base de datos de la lógica de negocio.</p>
+ */
 public class BagDAO implements IBagDAO {
 
+
+    /**
+     * Guarda una nueva bolsa en la base de datos.
+     *
+     * @param bag entidad a persistir.
+     * @return la entidad guardada o {@code null} si ocurre un error.
+     */
     @Override
     public Bag save(Bag bag) {
         Session session = null;
@@ -34,6 +55,12 @@ public class BagDAO implements IBagDAO {
         }
     }
 
+    /**
+     * Actualiza una bolsa existente.
+     *
+     * @param bag entidad modificada.
+     * @return {@code true} si la actualización fue correcta.
+     */
     @Override
     public boolean update(Bag bag) {
         Session session = null;
@@ -56,6 +83,12 @@ public class BagDAO implements IBagDAO {
         }
     }
 
+    /**
+     * Elimina físicamente una bolsa de la base de datos.
+     *
+     * @param bag entidad a eliminar.
+     * @return {@code true} si se eliminó correctamente.
+     */
     @Override
     public boolean delete(Bag bag) {
         Session session = null;
@@ -78,6 +111,11 @@ public class BagDAO implements IBagDAO {
         }
     }
 
+    /**
+     * Obtiene todas las bolsas registradas.
+     *
+     * @return lista de bolsas o {@code null} si ocurre un error.
+     */
     @Override
     public List<Bag> getAll() {
         Session session = null;
@@ -97,6 +135,15 @@ public class BagDAO implements IBagDAO {
         return null;
     }
 
+
+    /**
+     * Busca una bolsa por su ID.
+     *
+     * <p>Fuerza la inicialización de relaciones para evitar problemas de Lazy Loading.</p>
+     *
+     * @param bagId identificador de la bolsa.
+     * @return entidad encontrada o {@code null}.
+     */
     @Override
     public Bag getById(int bagId) {
         Session session = null;
@@ -116,6 +163,12 @@ public class BagDAO implements IBagDAO {
         return bag;
     }
 
+    /**
+     * Verifica si existe una bolsa cuyo código coincida (búsqueda parcial).
+     *
+     * @param code código a buscar.
+     * @return {@code true} si existe coincidencia.
+     */
     @Override
     public boolean getByCode(String code) {
         Session session = null;
@@ -146,6 +199,12 @@ public class BagDAO implements IBagDAO {
         return false;
     }
 
+    /**
+     * Realiza un borrado lógico cambiando el estado a INACTIVE.
+     *
+     * @param bagId identificador de la bolsa.
+     * @return {@code true} si se actualizó al menos un registro.
+     */
     @Override
     public boolean softDeleteById(int bagId) {
         Session session = null;
@@ -181,7 +240,13 @@ public class BagDAO implements IBagDAO {
     }
 
 
-
+    /**
+     * Obtiene todas las bolsas activas junto con sus relaciones principales.
+     *
+     * <p>Usa JOIN FETCH para evitar múltiples consultas (problema N+1).</p>
+     *
+     * @return lista de bolsas con detalles completos.
+     */
     @Override
     public List<Bag> getAllWithDetails() {
         Session session = null;
@@ -217,6 +282,13 @@ public class BagDAO implements IBagDAO {
         }
     }
 
+    /**
+     * Obtiene el último código registrado (ordenado por ID descendente).
+     *
+     * <p>Se usa normalmente para generar el siguiente código incremental.</p>
+     *
+     * @return último código o {@code null} si no existen registros.
+     */
     @Override
     public String getLastCode() {
         Session session = null;

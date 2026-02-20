@@ -10,7 +10,6 @@ import gm.carlos.app.model.repository.ITransitionScreen;
 import gm.carlos.app.util.Utilities;
 import gm.carlos.app.view.bag.BagView;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.math.BigDecimal;
@@ -18,6 +17,30 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 
+/**
+ * Controlador encargado de la gestión de Bolsos (Bag) dentro de la aplicación.
+ *
+ * <p>Esta clase forma parte de la capa de presentación siguiendo el patrón MVC.
+ * Actúa como intermediaria entre la vista {@link BagView} y la lógica de negocio
+ * proporcionada por {@link Model}.</p>
+ *
+ * <p>Sus responsabilidades principales son:
+ * <ul>
+ *     <li>Escuchar los eventos generados por la interfaz gráfica.</li>
+ *     <li>Validar los datos introducidos por el usuario.</li>
+ *     <li>Crear, actualizar o eliminar entidades {@link Bag}.</li>
+ *     <li>Sincronizar información relacionada como {@link Stock}, {@link TechnicalSheet},
+ *     {@link Supplier} y {@link Location}.</li>
+ *     <li>Gestionar la navegación entre pantallas mediante {@link ITransitionScreen}.</li>
+ * </ul>
+ * </p>
+ *
+ * <p>Este controlador NO contiene lógica de persistencia directa; delega todas
+ * las operaciones al modelo y a la capa de servicios.</p>
+ *
+ * @author Carlos
+ * @version 1.0
+ */
 public class BagController implements ActionListener {
 
     private BagView bagView;
@@ -26,6 +49,13 @@ public class BagController implements ActionListener {
 
     private ITransitionScreen navigation;
 
+    /**
+     * Constructor del controlador de bolsos.
+     *
+     * @param bagView    vista asociada a la gestión de bolsos
+     * @param model      modelo central que proporciona acceso a los servicios
+     * @param navigation interfaz utilizada para realizar cambios de pantalla
+     */
     public BagController(BagView bagView, Model model, ITransitionScreen navigation) {
         this.bagView = bagView;
         this.model = model;
@@ -43,6 +73,13 @@ public class BagController implements ActionListener {
         bagView.btnHome.addActionListener(actionListener);
     }
 
+
+    /**
+     * Gestiona los eventos lanzados por los botones de la vista.
+     * Dependiendo de la acción ejecuta guardar, actualizar, limpiar o navegar.
+     *
+     * @param e evento de acción generado por el usuario
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         String evt = e.getActionCommand();
@@ -62,16 +99,9 @@ public class BagController implements ActionListener {
             }
             case "btnHome": {
 
-//                if(currentbag != null){
-//                    int option = Utilities.confirmMessage("You're currently updating a Bag, are you sure want to go to Home?","Alert");
-//
-//                    if(option == JOptionPane.YES_NO_OPTION){
-//                        clearForm();
-//                        navigation.goToDashboard();
-//                    }
-//                }
-
-                navigation.confirmNavigation(currentbag,n -> {navigation.goToDashboard();});
+                navigation.confirmNavigation(currentbag, n -> {
+                    navigation.goToDashboard();
+                });
 
                 break;
             }
@@ -82,6 +112,13 @@ public class BagController implements ActionListener {
         return currentbag;
     }
 
+
+    /**
+     * Carga un bolso existente en el formulario para su edición.
+     * Rellena todos los campos de la interfaz con los datos actuales.
+     *
+     * @param bag bolso seleccionado para modificar
+     */
     public void loadBagForEdit(Bag bag) {
         this.currentbag = bag;
 
@@ -113,6 +150,21 @@ public class BagController implements ActionListener {
     }
 
 
+    /**
+     * Actualiza el bolso actualmente seleccionado con la información introducida
+     * en el formulario.
+     *
+     * <p>También actualiza sus relaciones:
+     * <ul>
+     *     <li>{@link Stock}</li>
+     *     <li>{@link TechnicalSheet}</li>
+     *     <li>{@link Supplier}</li>
+     *     <li>{@link Location}</li>
+     * </ul>
+     * </p>
+     *
+     * <p>Regla de negocio: si la cantidad de stock es 0, el bolso se elimina automáticamente.</p>
+     */
     private void update() {
 
         List<Bag> bagList = model.getBagService().getAll();
@@ -192,6 +244,12 @@ public class BagController implements ActionListener {
 
     }
 
+    /**
+     * Recoge los datos del formulario, los valida y crea un nuevo registro de {@link Bag}.
+     *
+     * <p>Si los datos no son válidos se cancela la operación.
+     * Si el guardado es correcto, se limpia el formulario y se vuelve al Dashboard.</p>
+     */
     private void save() {
 
         Location location = (Location) bagView.cbLocation.getSelectedItem();
@@ -248,7 +306,6 @@ public class BagController implements ActionListener {
                 managedSupplier.getBags().add(bag);
             }
 
-
             if (location != null) {
                 LocationBag locationBag = new LocationBag();
                 locationBag.setBag(bag);
@@ -262,7 +319,6 @@ public class BagController implements ActionListener {
                 Utilities.showInfoAlert("Bag saved successfully");
                 clearForm();
                 reloadInformation();
-                ;
                 navigation.goToDashboard();
             } else {
                 Utilities.showErrorAlert("There was a Error saving the Bag");
@@ -274,6 +330,11 @@ public class BagController implements ActionListener {
 
     }
 
+    /**
+     * Limpia todos los campos del formulario y reinicia el estado del controlador.
+     * Se utiliza después de guardar, actualizar o cuando el usuario desea comenzar
+     * un nuevo registro.
+     */
     public void clearForm() {
         bagView.txtLastCode.setText(model.getBagService().getLastCode());
         bagView.txtCode.setText("");
@@ -291,6 +352,11 @@ public class BagController implements ActionListener {
     }
 
 
+    /**
+     * Valida que todos los campos del formulario tengan valores correctos.
+     *
+     * @return true si la validación es correcta, false si existe algún error
+     */
     private boolean validateForm(Location location, Supplier supplier, String code, ModelEnum modelEnum,
                                  LocalDate dateEntry, Number quantity, Number price, Number weight,
                                  Material material, ColorEnum colorEnum, Status status) {
@@ -371,6 +437,14 @@ public class BagController implements ActionListener {
         return true;
     }
 
+    /**
+     * Comprueba que el código del bolso no esté repetido en la base de datos.
+     *
+     * @param code       código introducido por el usuario
+     * @param bags       lista de bolsos existentes
+     * @param currentbag bolso en edición (se ignora en la comprobación)
+     * @return true si el código es único, false si ya existe
+     */
     private boolean isCodeUnique(String code, List<Bag> bags, Bag currentbag) {
         for (Bag bag : bags) {
             if (currentbag != null && bag.getIdbag().equals(currentbag.getIdbag())) {
@@ -384,10 +458,19 @@ public class BagController implements ActionListener {
         return true;
     }
 
+    /**
+     * Inicializa el estado del formulario al cargar la pantalla.
+     */
     public void initComponent() {
         clearForm();
     }
 
+    /**
+     * Recarga la información de Localizaciones y Proveedores desde la base de datos
+     * y actualiza los ComboBox de la vista.
+     *
+     * <p>Garantiza que el usuario siempre trabaje con datos actualizados.</p>
+     */
     private void reloadInformation() {
         List<Location> locationList = model.getLocationService().getAll();
         bagView.cbLocation.removeAllItems();

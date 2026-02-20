@@ -9,8 +9,31 @@ import org.hibernate.Session;
 import javax.persistence.Query;
 import java.util.List;
 
+/**
+ * Implementación DAO para la entidad {@link Stock}.
+ *
+ * <p>Gestiona la persistencia del inventario asociado a las bolsas,
+ * permitiendo realizar operaciones CRUD sobre la información de stock.</p>
+ *
+ * <p>Esta clase utiliza Hibernate para:</p>
+ * <ul>
+ *     <li>Abrir y cerrar sesiones de base de datos.</li>
+ *     <li>Controlar manualmente las transacciones.</li>
+ *     <li>Realizar rollback en caso de error.</li>
+ *     <li>Ejecutar consultas HQL.</li>
+ * </ul>
+ *
+ * <p>Pertenece a la capa de acceso a datos (DAO Layer).</p>
+ */
 public class StockDAO implements IStockDAO {
 
+
+    /**
+     * Guarda un nuevo registro de stock en la base de datos.
+     *
+     * @param stock entidad a persistir.
+     * @return {@code true} si se guardó correctamente, {@code false} en caso de error.
+     */
     @Override
     public boolean save(Stock stock) {
         Session session = null;
@@ -33,6 +56,12 @@ public class StockDAO implements IStockDAO {
         }
     }
 
+    /**
+     * Actualiza un registro de stock existente.
+     *
+     * @param stock entidad modificada.
+     * @return {@code true} si la actualización fue exitosa.
+     */
     @Override
     public boolean update(Stock stock) {
         Session session = null;
@@ -55,6 +84,12 @@ public class StockDAO implements IStockDAO {
         }
     }
 
+    /**
+     * Elimina físicamente un registro de stock.
+     *
+     * @param stock entidad a eliminar.
+     * @return {@code true} si se eliminó correctamente.
+     */
     @Override
     public boolean delete(Stock stock) {
         Session session = null;
@@ -77,6 +112,11 @@ public class StockDAO implements IStockDAO {
         }
     }
 
+    /**
+     * Obtiene todos los registros de stock almacenados.
+     *
+     * @return lista de stock o {@code null} si ocurre un error.
+     */
     @Override
     public List<Stock> getAll() {
         Session session = null;
@@ -96,6 +136,12 @@ public class StockDAO implements IStockDAO {
         return null;
     }
 
+    /**
+     * Busca un registro de stock por su identificador.
+     *
+     * @param stockId ID del stock.
+     * @return entidad encontrada o {@code null} si no existe.
+     */
     @Override
     public Stock getById(int stockId) {
         Session session = null;

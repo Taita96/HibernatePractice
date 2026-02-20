@@ -9,8 +9,32 @@ import org.hibernate.Session;
 import javax.persistence.Query;
 import java.util.List;
 
+
+/**
+ * Implementación DAO para la entidad {@link Supplier}.
+ *
+ * <p>Gestiona la persistencia de los proveedores, permitiendo realizar
+ * operaciones CRUD sobre la información de los mismos.</p>
+ *
+ * <p>Esta clase utiliza Hibernate para:</p>
+ * <ul>
+ *     <li>Abrir y cerrar sesiones de base de datos.</li>
+ *     <li>Controlar manualmente las transacciones.</li>
+ *     <li>Realizar rollback en caso de error.</li>
+ *     <li>Ejecutar consultas HQL.</li>
+ * </ul>
+ *
+ * <p>Pertenece a la capa de acceso a datos (DAO Layer).</p>
+ */
 public class SupplierDAO implements ISupplierDAO {
 
+
+    /**
+     * Guarda un nuevo proveedor en la base de datos.
+     *
+     * @param supplier entidad a persistir.
+     * @return {@code true} si se guardó correctamente, {@code false} en caso de error.
+     */
     @Override
     public boolean save(Supplier supplier) {
         Session session = null;
@@ -33,7 +57,12 @@ public class SupplierDAO implements ISupplierDAO {
         }
     }
 
-
+    /**
+     * Actualiza un proveedor existente.
+     *
+     * @param supplier entidad modificada.
+     * @return {@code true} si la actualización fue exitosa.
+     */
     @Override
     public boolean update(Supplier supplier) {
         Session session = null;
@@ -56,6 +85,12 @@ public class SupplierDAO implements ISupplierDAO {
         }
     }
 
+    /**
+     * Elimina físicamente un proveedor de la base de datos.
+     *
+     * @param supplier entidad a eliminar.
+     * @return {@code true} si se eliminó correctamente.
+     */
     @Override
     public boolean delete(Supplier supplier) {
         Session session = null;
@@ -78,6 +113,11 @@ public class SupplierDAO implements ISupplierDAO {
         }
     }
 
+    /**
+     * Obtiene todos los proveedores registrados en la base de datos.
+     *
+     * @return lista de proveedores o {@code null} si ocurre un error.
+     */
     @Override
     public List<Supplier> getAll() {
         Session session = null;
@@ -101,6 +141,13 @@ public class SupplierDAO implements ISupplierDAO {
         return null;
     }
 
+
+    /**
+     * Busca un proveedor por su identificador y carga sus bolsas asociadas.
+     *
+     * @param id ID del proveedor.
+     * @return entidad encontrada o {@code null} si no existe.
+     */
     @Override
     public Supplier getById(int id) {
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -126,6 +173,15 @@ public class SupplierDAO implements ISupplierDAO {
         return null;
     }
 
+    /**
+     * Busca un proveedor por nombre y contacto.
+     *
+     * <p>Realiza una búsqueda parcial usando LIKE y fuerza la carga de las bolsas asociadas.</p>
+     *
+     * @param name nombre o parte del nombre del proveedor.
+     * @param contact contacto o parte del contacto del proveedor.
+     * @return proveedor encontrado o {@code null} si no existe.
+     */
     @Override
     public Supplier findByNameAndContact(String name, String contact) {
         Session session = null;

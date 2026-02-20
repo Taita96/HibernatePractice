@@ -17,10 +17,36 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.util.function.Consumer;
 
-
-public class IndexController implements ActionListener, ITransitionScreen {
+/**
+ * Controlador principal de la aplicación.
+ *
+ * <p>Actúa como punto central de coordinación entre la vista general {@link View},
+ * el modelo {@link Model} y los controladores específicos de cada módulo
+ * (Bags, Suppliers, Locations y Dashboard).</p>
+ *
+ * <p>Implementa el patrón Front Controller, encargándose de:
+ * <ul>
+ *     <li>Gestionar la conexión y desconexión con la base de datos mediante Hibernate.</li>
+ *     <li>Inicializar los controladores secundarios.</li>
+ *     <li>Controlar la navegación entre pantallas utilizando CardLayout.</li>
+ *     <li>Evitar cambios de pantalla cuando existen ediciones en curso.</li>
+ *     <li>Centralizar los eventos principales de la aplicación.</li>
+ * </ul>
+ * </p>
+ *
+ * <p>También implementa {@link ITransitionScreen} para desacoplar la navegación
+ * de los controladores secundarios, evitando dependencias directas entre vistas.</p>
+ *
+ * <p>Este diseño garantiza una arquitectura MVC desacoplada y mantenible.</p>
+ *
+ * @author Carlos
+ * @version 1.0
+ */
+public class IndexController implements ActionListener, ITransitionScreen, WindowListener {
 
     private View view;
     private Model model;
@@ -30,15 +56,26 @@ public class IndexController implements ActionListener, ITransitionScreen {
     private BagController bagController;
     private DashboardController dashboardController;
 
+    /**
+     * Inicializa el controlador principal del sistema.
+     *
+     * @param view vista principal de la aplicación
+     * @param model modelo central con acceso a servicios
+     */
     public IndexController(View view, Model model) {
         this.view = view;
         this.model = model;
         addActionListener(this);
+        addWindowListener(this);
         setNavigationEnabled(false);
 //        this.supplierController = new SupplierController(view.supplierView, model, this);
 //        this.locationController = new LocationController(view.locationView, model, this);
 //        this.bagController = new BagController(view.BAG_VIEW, model, this);
 //        this.dashboardController = new DashboardController(view.DASHBOARD_VIEW, model, this);
+    }
+
+    private void addWindowListener(WindowListener e) {
+        this.view.addWindowListener(e);
     }
 
     private void addActionListener(ActionListener actionListener) {
@@ -89,6 +126,9 @@ public class IndexController implements ActionListener, ITransitionScreen {
         }
     }
 
+    /**
+     * Cierra la conexión con la base de datos y bloquea la navegación.
+     */
     private void disconnected() {
 
         if (HibernateUtil.isConnected()) {
@@ -109,6 +149,9 @@ public class IndexController implements ActionListener, ITransitionScreen {
         view.panelCenter.repaint();
     }
 
+    /**
+     * Registra todas las pantallas del sistema dentro del CardLayout central.
+     */
     private void initCards() {
 
         view.panelCenter.removeAll();
@@ -121,6 +164,18 @@ public class IndexController implements ActionListener, ITransitionScreen {
     }
 
 
+    /**
+     * Establece la conexión con la base de datos.
+     *
+     * <p>Al conectarse:
+     * <ul>
+     *     <li>Inicializa Hibernate.</li>
+     *     <li>Habilita la navegación.</li>
+     *     <li>Registra las vistas en el CardLayout.</li>
+     *     <li>Crea los controladores secundarios.</li>
+     * </ul>
+     * </p>
+     */
     private void connected() {
 
         if (!HibernateUtil.isConnected()) {
@@ -130,7 +185,6 @@ public class IndexController implements ActionListener, ITransitionScreen {
             view.itemConectar.setActionCommand("Desconectar");
             setNavigationEnabled(true);
             initCards();
-            // Crear controladores ahora que hay conexión
             this.supplierController = new SupplierController(view.supplierView, model, this);
             this.locationController = new LocationController(view.locationView, model, this);
             this.bagController = new BagController(view.BAG_VIEW, model, this);
@@ -139,6 +193,12 @@ public class IndexController implements ActionListener, ITransitionScreen {
     }
 
 
+    /**
+     * Controla los cambios de pantalla evitando pérdida de datos si el usuario
+     * está editando información.
+     *
+     * @param accion acción de navegación solicitada
+     */
     @Override
     public void navigateControl(Consumer<ITransitionScreen> accion) {
 
@@ -163,6 +223,12 @@ public class IndexController implements ActionListener, ITransitionScreen {
         accion.accept(this);
     }
 
+    /**
+     * Solicita confirmación al usuario antes de abandonar una edición en curso.
+     *
+     * @param object objeto actualmente en edición
+     * @param accion acción de navegación a ejecutar si se confirma
+     */
     @Override
     public void confirmNavigation(Object object, Consumer<ITransitionScreen> accion) {
         int option = 0;
@@ -193,6 +259,11 @@ public class IndexController implements ActionListener, ITransitionScreen {
         }
     }
 
+    /**
+     * Habilita o deshabilita los botones de navegación lateral.
+     *
+     * @param enabled estado de habilitación
+     */
     private void setNavigationEnabled(boolean enabled) {
 
         view.btnDashboard.setEnabled(enabled);
@@ -203,38 +274,101 @@ public class IndexController implements ActionListener, ITransitionScreen {
     }
 
 
+    /**
+     * Navega a la pantalla de gestión de bolsas.
+     */
     @Override
     public void goToBag() {
         showCard("bagCard");
         bagController.initComponent();
     }
 
+    /**
+     * Muestra la pantalla principal (Dashboard) y actualiza los datos visibles.
+     */
     @Override
     public void goToDashboard() {
         showCard("dashboardView");
         dashboardController.reloadTable();
     }
-
+    /**
+     * Navega a la pantalla de gestión de proveedores.
+     */
     @Override
     public void goToSupplier() {
         showCard("supplierCard");
     }
 
+    /**
+     * Navega a la pantalla de gestión de ubicaciones.
+     */
     @Override
     public void goToLocation() {
         showCard("locationCard");
     }
 
+    /**
+     * Abre la pantalla de edición cargando una bolsa específica.
+     *
+     * @param bag bolsa a editar
+     */
     @Override
     public void goToBagWithBag(Bag bag) {
         showCard("bagCard");
         bagController.loadBagForEdit(bag);
     }
 
+    /**
+     * Cambia la vista visible dentro del CardLayout.
+     *
+     * @param cardName nombre de la tarjeta a mostrar
+     */
     private void showCard(String cardName) {
         CardLayout card = (CardLayout) view.panelCenter.getLayout();
         card.show(view.panelCenter, cardName);
     }
 
 
+    @Override
+    public void windowOpened(WindowEvent e) {
+
+    }
+
+    /**
+     * Controla el cierre de la aplicación solicitando confirmación al usuario
+     * y liberando los recursos de Hibernate.
+     */
+    @Override
+    public void windowClosing(WindowEvent e) {
+        int option = Utilities.confirmMessage("Do you really want to exit the application?", "Exit Application");
+        if (option == JOptionPane.YES_OPTION) {
+            HibernateUtil.disconnect();
+            System.exit(0);
+        }
+    }
+
+    @Override
+    public void windowClosed(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowIconified(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowDeiconified(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowActivated(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowDeactivated(WindowEvent e) {
+
+    }
 }

@@ -15,6 +15,29 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+/**
+ * Controlador encargado de la gestión de proveedores (Supplier) dentro del sistema.
+ *
+ * <p>Forma parte de la capa de presentación en la arquitectura MVC, actuando como
+ * intermediario entre {@link SupplierView} y los servicios accesibles desde {@link Model}.</p>
+ *
+ * <p>Este controlador permite:
+ * <ul>
+ *     <li>Registrar nuevos proveedores.</li>
+ *     <li>Actualizar proveedores existentes.</li>
+ *     <li>Eliminar proveedores.</li>
+ *     <li>Validar los datos introducidos por el usuario.</li>
+ *     <li>Editar datos directamente desde la tabla (inline editing).</li>
+ *     <li>Gestionar la navegación entre pantallas.</li>
+ * </ul>
+ * </p>
+ *
+ * <p>No contiene acceso directo a la base de datos; todas las operaciones se delegan
+ * al {@code SupplierService}, manteniendo la separación de responsabilidades.</p>
+ *
+ * @author Carlos
+ * @version 1.0
+ */
 public class SupplierController implements ActionListener, ListSelectionListener, TableModelListener {
 
     private SupplierView supplierView;
@@ -23,6 +46,14 @@ public class SupplierController implements ActionListener, ListSelectionListener
 
     private ITransitionScreen navigation;
 
+    /**
+     * Inicializa el controlador de proveedores.
+     * Registra los listeners de la interfaz y carga los datos iniciales.
+     *
+     * @param supplierView vista asociada a proveedores
+     * @param model modelo central del sistema
+     * @param navigation gestor de navegación entre pantallas
+     */
     public SupplierController(SupplierView supplierView, Model model,ITransitionScreen navigation) {
         this.supplierView = supplierView;
         this.model = model;
@@ -34,6 +65,11 @@ public class SupplierController implements ActionListener, ListSelectionListener
     }
 
 
+    /**
+     * Asocia los botones de la interfaz con el controlador.
+     *
+     * @param actionListener listener que gestionará los eventos de usuario
+     */
     private void addActionListener(ActionListener actionListener) {
         supplierView.btnFormSupplierUpdate.addActionListener(actionListener);
         supplierView.btnFormSupplierSave.addActionListener(actionListener);
@@ -54,6 +90,12 @@ public class SupplierController implements ActionListener, ListSelectionListener
     }
 
 
+    /**
+     * Gestiona las acciones lanzadas por los botones de la interfaz.
+     * Ejecuta la operación correspondiente según el comando recibido.
+     *
+     * @param e evento de acción
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         String evt = e.getActionCommand();
@@ -86,6 +128,9 @@ public class SupplierController implements ActionListener, ListSelectionListener
         return currentSupplier;
     }
 
+    /**
+     * Elimina el proveedor seleccionado del sistema.
+     */
     private void delete() {
         int row = supplierView.tableSuppliers.getSelectedRow();
 
@@ -98,6 +143,10 @@ public class SupplierController implements ActionListener, ListSelectionListener
         cleanUI();
     }
 
+    /**
+     * Actualiza los datos del proveedor actualmente seleccionado utilizando
+     * la información introducida en el formulario.
+     */
     private void updateForm() {
 
         String name = supplierView.txtSupplierName.getText();
@@ -117,6 +166,12 @@ public class SupplierController implements ActionListener, ListSelectionListener
         cleanUI();
     }
 
+    /**
+     * Guarda un nuevo proveedor en el sistema.
+     *
+     * <p>Solo se permite la inserción cuando no hay un proveedor seleccionado.</p>
+     * <p>Los datos se validan antes de persistirse.</p>
+     */
     private void save() {
 
         String name = supplierView.txtSupplierName.getText();
@@ -138,6 +193,19 @@ public class SupplierController implements ActionListener, ListSelectionListener
 
     }
 
+    /**
+     * Valida los datos introducidos en el formulario.
+     *
+     * <ul>
+     *     <li>El nombre no puede estar vacío.</li>
+     *     <li>El contacto no puede estar vacío.</li>
+     *     <li>El contacto debe tener formato de email válido.</li>
+     * </ul>
+     *
+     * @param name nombre del proveedor
+     * @param contact email o contacto del proveedor
+     * @return true si existe algún error de validación, false si los datos son válidos
+     */
     private boolean validateForm(String name, String contact) {
         if (name.isEmpty()) {
             Utilities.showErrorAlert("Please Fill Field Name");
@@ -159,17 +227,31 @@ public class SupplierController implements ActionListener, ListSelectionListener
         return false;
     }
 
+    /**
+     * Limpia los campos del formulario de proveedor.
+     */
     private void cleanForm() {
         supplierView.txtSupplierName.setText("");
         supplierView.txtSupplierContact.setText("");
     }
 
+    /**
+     * Restablece completamente la interfaz:
+     * <ul>
+     *     <li>Deselecciona el proveedor actual.</li>
+     *     <li>Recarga la tabla de datos.</li>
+     *     <li>Limpia el formulario.</li>
+     * </ul>
+     */
     public void cleanUI(){
         currentSupplier = null;
         reloadTable();
         cleanForm();
     }
 
+    /**
+     * Recarga la lista de proveedores desde la base de datos y actualiza la tabla visual.
+     */
     private void reloadTable() {
 
         List<Supplier> supplierList = model.getSupplierService().getAllSupplier();
@@ -188,6 +270,12 @@ public class SupplierController implements ActionListener, ListSelectionListener
         Utilities.centerTable(supplierView.tableSuppliers);
     }
 
+    /**
+     * Se ejecuta cuando el usuario selecciona una fila de la tabla.
+     * Carga los datos del proveedor en el formulario para permitir su edición.
+     *
+     * @param e evento de selección
+     */
     @Override
     public void valueChanged(ListSelectionEvent e) {
         if (!e.getValueIsAdjusting() && !((ListSelectionModel) e.getSource()).isSelectionEmpty()) {
@@ -220,6 +308,18 @@ public class SupplierController implements ActionListener, ListSelectionListener
         }
     }
 
+    /**
+     * Detecta modificaciones directas realizadas sobre la tabla.
+     *
+     * <p>Cuando el usuario edita una celda:
+     * <ul>
+     *     <li>Se valida el nuevo valor.</li>
+     *     <li>Se actualiza automáticamente el proveedor en la base de datos.</li>
+     * </ul>
+     * </p>
+     *
+     * @param e evento de modificación del modelo de tabla
+     */
     @Override
     public void tableChanged(TableModelEvent e) {
         int row = e.getFirstRow();

@@ -17,12 +17,44 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+
+/**
+ * Controlador de la pantalla principal (Dashboard) de la aplicación.
+ *
+ * <p>Este controlador gestiona la visualización y administración de los bolsos registrados
+ * en el sistema. Forma parte de la capa de presentación dentro del patrón MVC,
+ * actuando como intermediario entre {@link DashboardView} y los servicios accesibles
+ * a través de {@link Model}.</p>
+ *
+ * <p>Responsabilidades principales:
+ * <ul>
+ *     <li>Cargar y mostrar los bolsos en la tabla del dashboard.</li>
+ *     <li>Gestionar acciones del usuario: registrar, actualizar y eliminar.</li>
+ *     <li>Coordinar la navegación entre pantallas mediante {@link ITransitionScreen}.</li>
+ *     <li>Refrescar la información mostrada tras cualquier operación.</li>
+ * </ul>
+ * </p>
+ *
+ * <p>Este controlador NO accede directamente a la base de datos; delega toda la
+ * lógica de negocio al modelo y a la capa de servicios.</p>
+ *
+ * @author Carlos
+ * @version 1.0
+ */
 public class DashboardController implements ActionListener, ListSelectionListener, TableModelListener {
 
     private DashboardView dashboardView;
     private Model model;
     private ITransitionScreen navigator;
 
+    /**
+     * Inicializa el controlador del Dashboard y registra los listeners necesarios
+     * para interactuar con la interfaz gráfica.
+     *
+     * @param dashboardView vista principal que contiene la tabla y los botones de gestión
+     * @param model modelo central que proporciona acceso a los servicios de negocio
+     * @param navigator interfaz encargada de la navegación entre pantallas
+     */
     public DashboardController(DashboardView dashboardView, Model model,ITransitionScreen navigator) {
         this.dashboardView = dashboardView;
         this.model = model;
@@ -33,13 +65,23 @@ public class DashboardController implements ActionListener, ListSelectionListene
         reloadTable();
     }
 
-
+    /**
+     * Asocia los botones de la vista con el controlador para capturar las acciones del usuario.
+     *
+     * @param actionListener listener que manejará los eventos de los botones
+     */
     private void addActionListener(ActionListener actionListener) {
         dashboardView.btnRegister.addActionListener(actionListener);
         dashboardView.btnUpdate.addActionListener(actionListener);
         dashboardView.btnDelete.addActionListener(actionListener);
     }
 
+    /**
+     * Configura el comportamiento de selección de la tabla del dashboard.
+     * Permite seleccionar una única fila para operar sobre un bolso concreto.
+     *
+     * @param e listener que detecta cambios de selección
+     */
     private void addListSelectionListener(ListSelectionListener e) {
         dashboardView.table.setCellSelectionEnabled(true);
         ListSelectionModel tableAdminProducts = dashboardView.table.getSelectionModel();
@@ -47,10 +89,21 @@ public class DashboardController implements ActionListener, ListSelectionListene
         tableAdminProducts.addListSelectionListener(e);
     }
 
+    /**
+     * Registra un listener sobre el modelo de la tabla para detectar cambios en los datos mostrados.
+     *
+     * @param e listener del modelo de tabla
+     */
     private void addTableModelListener(TableModelListener e) {
         dashboardView.dtmTableDasboard.addTableModelListener(e);
     }
 
+    /**
+     * Gestiona las acciones ejecutadas por los botones del Dashboard.
+     * Dependiendo del comando recibido realiza la navegación o la operación solicitada.
+     *
+     * @param e evento generado por la interacción del usuario
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         String evt = e.getActionCommand();
@@ -71,6 +124,12 @@ public class DashboardController implements ActionListener, ListSelectionListene
         }
     }
 
+    /**
+     * Elimina lógicamente (soft delete) el bolso seleccionado en la tabla.
+     *
+     * <p>Primero valida que exista una selección. Luego recupera el bolso desde el servicio
+     * y ejecuta su eliminación lógica. Finalmente recarga la tabla.</p>
+     */
     private void deleteBag() {
 
         int row = dashboardView.table.getSelectedRow();
@@ -90,8 +149,15 @@ public class DashboardController implements ActionListener, ListSelectionListene
         }
 
         model.getBagService().softDeleteById(bag.getIdbag());
+        reloadTable();
     }
 
+    /**
+     * Envía el bolso seleccionado al formulario de edición.
+     *
+     * <p>No modifica datos directamente; simplemente navega a la pantalla de edición
+     * pasando la entidad seleccionada.</p>
+     */
     private void updateFromForm() {
 
         int row = dashboardView.table.getSelectedRow();
@@ -113,7 +179,15 @@ public class DashboardController implements ActionListener, ListSelectionListene
 
     }
 
-
+    /**
+     * Recarga completamente la información mostrada en la tabla del Dashboard.
+     *
+     * <p>Obtiene todos los bolsos junto con sus relaciones (Stock, TechnicalSheet,
+     * Location y Supplier) y los transforma en filas visibles para el usuario.</p>
+     *
+     * <p>Este método actúa como sincronizador entre la base de datos y la interfaz gráfica,
+     * garantizando que siempre se muestre información actualizada.</p>
+     */
     public void reloadTable() {
 
         List<Bag> bagList = model.getBagService().getAllWithDetails();

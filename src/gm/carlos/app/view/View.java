@@ -10,7 +10,7 @@ import gm.carlos.app.view.supplier.SupplierView;
 import javax.swing.*;
 import java.awt.*;
 
-public class View extends JFrame{
+public class View extends JFrame {
 
     public JPanel panel1;
 
@@ -36,6 +36,7 @@ public class View extends JFrame{
     public View(){
         setTitle("WareHouse");
         setContentPane(panel1);
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         setLocationRelativeTo(null);
         initComponent();
         pack();
