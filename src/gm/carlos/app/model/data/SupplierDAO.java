@@ -137,9 +137,11 @@ public class SupplierDAO implements ISupplierDAO {
 
         } catch (HibernateException e) {
             e.printStackTrace();
-            return true; // por seguridad, bloquea borrado ante error
+            return true;
         } finally {
-            if (session != null) session.close();
+            if (session != null){
+                session.close();
+            }
         }
     }
 
@@ -175,23 +177,16 @@ public class SupplierDAO implements ISupplierDAO {
     /**
      * Busca un proveedor por su identificador y carga sus bolsas asociadas.
      *
-     * @param id ID del proveedor.
+     * @param idSupplier ID del proveedor.
      * @return entidad encontrada o {@code null} si no existe.
      */
     @Override
-    public Supplier getById(int id) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
+    public Supplier getById(int idSupplier) {
+        Session session = null;
         Supplier supplier = null;
         try {
-
-            String hql = "SELECT s " +
-                    "FROM Supplier s " +
-                    "JOIN FETCH s.bags " +
-                    "WHERE s.idsupplier = :id";
-
-            supplier = session.createQuery(hql, Supplier.class)
-                    .setParameter("id", id)
-                    .uniqueResult();
+            session = HibernateUtil.getSessionFactory().openSession();
+            supplier = session.get(Supplier.class, idSupplier);
             return supplier;
         } catch (HibernateException e) {
             e.printStackTrace();

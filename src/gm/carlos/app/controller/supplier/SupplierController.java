@@ -43,6 +43,7 @@ public class SupplierController implements ActionListener, ListSelectionListener
     private SupplierView supplierView;
     private Model model;
     Supplier currentSupplier;
+    private boolean loadingTable = false;
 
     private ITransitionScreen navigation;
 
@@ -134,10 +135,11 @@ public class SupplierController implements ActionListener, ListSelectionListener
     private void delete() {
         int row = supplierView.tableSuppliers.getSelectedRow();
 
-        if (row < 0) {
+        if (row < 0 || currentSupplier == null) {
             Utilities.showErrorAlert("Select a Supplier first");
             return;
         }
+
 
         if (!model.getSupplierService().deleteSupplier(currentSupplier)) {
             Utilities.showWarningAlert(
@@ -238,6 +240,7 @@ public class SupplierController implements ActionListener, ListSelectionListener
      * Limpia los campos del formulario de proveedor.
      */
     private void cleanForm() {
+        currentSupplier = null;
         supplierView.txtSupplierName.setText("");
         supplierView.txtSupplierContact.setText("");
     }
@@ -251,7 +254,6 @@ public class SupplierController implements ActionListener, ListSelectionListener
      * </ul>
      */
     public void cleanUI(){
-        currentSupplier = null;
         reloadTable();
         cleanForm();
     }
@@ -260,6 +262,8 @@ public class SupplierController implements ActionListener, ListSelectionListener
      * Recarga la lista de proveedores desde la base de datos y actualiza la tabla visual.
      */
     private void reloadTable() {
+
+        loadingTable = true;
 
         List<Supplier> supplierList = model.getSupplierService().getAllSupplier();
 
@@ -275,6 +279,8 @@ public class SupplierController implements ActionListener, ListSelectionListener
             });
         }
         Utilities.centerTable(supplierView.tableSuppliers);
+
+        loadingTable = false;
     }
 
     /**
@@ -329,6 +335,9 @@ public class SupplierController implements ActionListener, ListSelectionListener
      */
     @Override
     public void tableChanged(TableModelEvent e) {
+        if (loadingTable){
+            return;
+        }
         int row = e.getFirstRow();
         int column = e.getColumn();
 
@@ -336,9 +345,25 @@ public class SupplierController implements ActionListener, ListSelectionListener
             return;
         }
 
-        Object newValue = supplierView.tableSuppliers.getValueAt(row, column);
-        int supplierId = (int) supplierView.tableSuppliers.getValueAt(row, 0);
+        Object idObj = supplierView.tableSuppliers.getValueAt(row, 0);
+
+        if (idObj == null){
+            System.out.println("idObj == null");
+            return;
+        }
+
+        int supplierId = (int) idObj;
+
+
+
         Supplier supplier = model.getSupplierService().getByIdSupplier(supplierId);
+
+        if (supplier == null){
+            System.out.println("supplier == null");
+            return;
+        }
+
+        Object newValue = supplierView.tableSuppliers.getValueAt(row, column);
 
         switch (column) {
             case 1:

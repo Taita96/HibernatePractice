@@ -201,7 +201,13 @@ public class LocationDAO implements ILocationDAO {
         return null;
     }
 
-
+    /**
+     * Comprueba si un Location tiene al menos una bolsa asociada.
+     *
+     * @param locationId ID del Location.
+     * @return {@code true} si tiene bolsas asociadas, {@code false} si no.
+     */
+    @Override
     public boolean hasBags(int locationId) {
         Session session = null;
         try {
@@ -215,7 +221,9 @@ public class LocationDAO implements ILocationDAO {
             e.printStackTrace();
             return true;
         } finally {
-            if (session != null) session.close();
+            if (session != null){
+                session.close();
+            }
         }
     }
 }

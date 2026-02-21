@@ -143,8 +143,8 @@ public class LocationController implements ActionListener, ListSelectionListener
     private void delete() {
         int row = locationView.tableLocation.getSelectedRow();
 
-        if (row < 0) {
-            Utilities.showErrorAlert("Select a Supplier first");
+        if (row < 0 || currentLocation == null) {
+            Utilities.showErrorAlert("Select a Location first");
             return;
         }
 
@@ -235,7 +235,7 @@ public class LocationController implements ActionListener, ListSelectionListener
      * Limpia los campos del formulario.
      */
     private void cleanForm() {
-
+        currentLocation = null;
         locationView.txtShelf.setText("");
         locationView.txtAisle.setText("");
     }
@@ -249,7 +249,6 @@ public class LocationController implements ActionListener, ListSelectionListener
      * </ul>
      */
     public void cleanUI(){
-        currentLocation = null;
         reloadTable();
         cleanForm();
     }

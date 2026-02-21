@@ -64,4 +64,6 @@ public interface ILocationDAO {
      * @return ubicación encontrada o {@code null} si no existe.
      */
     Location findByAisleAndShelf(String aisle, String shelf);
+
+    boolean hasBags(int locationId);
 }

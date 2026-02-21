@@ -9,15 +9,11 @@
     <list default="true" id="0a437967-c4b2-46c8-9a27-c82b810f1f89" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/Practica2UD3CarlosGonzalez2_jar/Practica2UD3CarlosGonzalez2.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Practica2UD3CarlosGonzalez2_jar/Practica2UD3CarlosGonzalez2.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gm/carlos/app/controller/bag/BagController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gm/carlos/app/controller/bag/BagController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gm/carlos/app/controller/location/LocationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gm/carlos/app/controller/location/LocationController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gm/carlos/app/controller/supplier/SupplierController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gm/carlos/app/controller/supplier/SupplierController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gm/carlos/app/model/data/LocationDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gm/carlos/app/model/data/LocationDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gm/carlos/app/model/data/SupplierDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gm/carlos/app/model/data/SupplierDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gm/carlos/app/model/repository/ISupplierDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gm/carlos/app/model/repository/ISupplierDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gm/carlos/app/model/service/LocationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gm/carlos/app/model/service/LocationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gm/carlos/app/model/service/SupplierService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gm/carlos/app/model/service/SupplierService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gm/carlos/app/view/bag/BagView.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/gm/carlos/app/view/bag/BagView.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gm/carlos/app/model/repository/ILocationDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gm/carlos/app/model/repository/ILocationDAO.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -170,6 +166,7 @@
       <workItem from="1771629578983" duration="203000" />
       <workItem from="1771630690598" duration="238000" />
       <workItem from="1771632220835" duration="1854000" />
+      <workItem from="1771678996346" duration="2092000" />
     </task>
     <servers />
   </component>
