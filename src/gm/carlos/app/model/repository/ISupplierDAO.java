@@ -64,4 +64,7 @@ public interface ISupplierDAO {
      * @return proveedor encontrado o {@code null} si no existe.
      */
     Supplier findByNameAndContact(String name, String contact);
+
+
+    boolean hasBags(int supplierId);
 }

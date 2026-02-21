@@ -32,8 +32,11 @@ public class SupplierService {
      *
      * @param supplier entidad {@code Supplier} a eliminar.
      */
-    public void deleteSupplier(Supplier supplier){
-        supplierDAO.delete(supplier);
+    public boolean deleteSupplier(Supplier supplier){
+        if (supplierDAO.hasBags(supplier.getIdsupplier())) {
+            return false; // bloqueamos el borrado
+        }
+        return supplierDAO.delete(supplier);
     }
 
     /**

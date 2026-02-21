@@ -139,7 +139,14 @@ public class SupplierController implements ActionListener, ListSelectionListener
             return;
         }
 
-        model.getSupplierService().deleteSupplier(currentSupplier);
+        if (!model.getSupplierService().deleteSupplier(currentSupplier)) {
+            Utilities.showWarningAlert(
+                    "Cannot delete supplier. It is associated with one or more Bags."
+            );
+            return;
+        }
+
+//        model.getSupplierService().deleteSupplier(currentSupplier);
         cleanUI();
     }
 

@@ -200,4 +200,22 @@ public class LocationDAO implements ILocationDAO {
         }
         return null;
     }
+
+
+    public boolean hasBags(int locationId) {
+        Session session = null;
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            String hql = "SELECT COUNT(lb) FROM LocationBag lb WHERE lb.locationBags.idlocation = :id";
+            Long count = session.createQuery(hql, Long.class)
+                    .setParameter("id", locationId)
+                    .uniqueResult();
+            return count != null && count > 0;
+        } catch (HibernateException e) {
+            e.printStackTrace();
+            return true;
+        } finally {
+            if (session != null) session.close();
+        }
+    }
 }

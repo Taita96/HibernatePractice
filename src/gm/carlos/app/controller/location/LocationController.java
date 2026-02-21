@@ -148,7 +148,14 @@ public class LocationController implements ActionListener, ListSelectionListener
             return;
         }
 
-        model.getLocationService().delete(currentLocation);
+        if (!model.getLocationService().delete(currentLocation)) {
+            Utilities.showWarningAlert(
+                    "Cannot delete location. It is associated with one or more Bags."
+            );
+            return;
+        }
+
+//        model.getLocationService().delete(currentLocation);
         cleanUI();
     }
 

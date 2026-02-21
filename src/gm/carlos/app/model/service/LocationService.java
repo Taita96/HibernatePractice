@@ -32,8 +32,13 @@ public class LocationService {
      *
      * @param location entidad {@code Location} a eliminar.
      */
-    public void delete(Location location){
-        locationDAO.delete(location);
+    public boolean delete(Location location){
+
+        if (locationDAO.hasBags(location.getIdlocation())){
+            return false;
+        }
+
+        return locationDAO.delete(location);
     }
 
     /**

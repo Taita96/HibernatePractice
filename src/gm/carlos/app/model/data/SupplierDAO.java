@@ -114,6 +114,36 @@ public class SupplierDAO implements ISupplierDAO {
     }
 
     /**
+     * Comprueba si un proveedor tiene al menos una bolsa asociada.
+     *
+     * @param supplierId ID del proveedor.
+     * @return {@code true} si tiene bolsas asociadas, {@code false} si no.
+     */
+    @Override
+    public boolean hasBags(int supplierId) {
+        Session session = null;
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+
+            String hql = "SELECT COUNT(b) " +
+                    "FROM Bag b JOIN b.suppliers s " +
+                    "WHERE s.idsupplier = :id";
+
+            Long count = session.createQuery(hql, Long.class)
+                    .setParameter("id", supplierId)
+                    .uniqueResult();
+
+            return count != null && count > 0;
+
+        } catch (HibernateException e) {
+            e.printStackTrace();
+            return true; // por seguridad, bloquea borrado ante error
+        } finally {
+            if (session != null) session.close();
+        }
+    }
+
+    /**
      * Obtiene todos los proveedores registrados en la base de datos.
      *
      * @return lista de proveedores o {@code null} si ocurre un error.

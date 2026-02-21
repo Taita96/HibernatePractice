@@ -462,6 +462,7 @@ public class BagController implements ActionListener {
      * Inicializa el estado del formulario al cargar la pantalla.
      */
     public void initComponent() {
+        reloadInformation();
         clearForm();
     }
 
